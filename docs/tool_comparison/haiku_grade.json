@@ -1,0 +1,75 @@
+{
+ "reference_licm": {
+  "sum_invariant": {
+   "output_ok": true,
+   "dyn_instr": 18005
+  },
+  "cse_poly": {
+   "output_ok": true,
+   "dyn_instr": 21005
+  },
+  "primes": {
+   "output_ok": true,
+   "dyn_instr": 49034
+  },
+  "matmul": {
+   "output_ok": true,
+   "dyn_instr": 124645
+  },
+  "fib_const": {
+   "output_ok": true,
+   "dyn_instr": 27008
+  }
+ },
+ "candidate_fuzz": {
+  "programs": 300,
+  "pipelines_per_program": 3,
+  "mismatches": 0,
+  "examples": []
+ },
+ "fuzz_secs": 6.387449819000011,
+ "candidate_licm": {
+  "sum_invariant": {
+   "output_ok": true,
+   "dyn_instr": 18005
+  },
+  "cse_poly": {
+   "output_ok": true,
+   "dyn_instr": 21005
+  },
+  "primes": {
+   "output_ok": true,
+   "dyn_instr": 49034
+  },
+  "matmul": {
+   "output_ok": true,
+   "dyn_instr": 124645
+  },
+  "fib_const": {
+   "output_ok": true,
+   "dyn_instr": 27008
+  }
+ },
+ "no_licm": {
+  "sum_invariant": {
+   "output_ok": true,
+   "dyn_instr": 18005
+  },
+  "cse_poly": {
+   "output_ok": true,
+   "dyn_instr": 21005
+  },
+  "primes": {
+   "output_ok": true,
+   "dyn_instr": 49034
+  },
+  "matmul": {
+   "output_ok": true,
+   "dyn_instr": 132625
+  },
+  "fib_const": {
+   "output_ok": true,
+   "dyn_instr": 27008
+  }
+ }
+}

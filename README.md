@@ -13,7 +13,7 @@ nurse rostering**. Every component was produced with AI assistance (Claude Opus 
 | [`docs/CHAPTER6_CHECKLIST.md`](docs/CHAPTER6_CHECKLIST.md) | Every Chapter 6 method → experiment, code location, result |
 | [`docs/FAILURE_LOG.md`](docs/FAILURE_LOG.md) | 15 cases where AI-generated code was wrong, and how each was caught |
 | [`docs/AI_TOOLS.md`](docs/AI_TOOLS.md) | AI tools register and what the student must still do |
-| [`docs/TOOL_COMPARISON.md`](docs/TOOL_COMPARISON.md) | Tool-comparison template (to be completed with a second AI tool) |
+| [`docs/TOOL_COMPARISON.md`](docs/TOOL_COMPARISON.md) | Claude Opus 5.5 vs Claude Haiku 5.5 on the same task, graded by the same fuzzer |
 | [`docs/VIVA_NOTES.md`](docs/VIVA_NOTES.md) | How each track works, likely viva questions, live-modification exercises |
 | [`prompts/`](prompts) | Prompt log per track (`prompts/<A..J>/LOG.md`) and the session log |
 
@@ -88,7 +88,7 @@ the FakeManilaV2 calibration-based noise model (Track I).
 
 ## Academic honesty
 
-This repository was generated in one agentic AI session from the request in `prompts/general/LOG.md`. The student
-must be able to explain and modify every component without the AI (Section 8, viva). Before submission she should
-(1) add the chat export, (2) complete the tool comparison, (3) commit her own changes with `[manual]`, and
-(4) set her own git author e-mail. See `docs/AI_TOOLS.md`.
+This repository was generated in one agentic AI session from the request in `prompts/general/LOG.md`
+(transcript: `prompts/general/CHAT_TRANSCRIPT.md`). The tool comparison (Opus 5.5 vs Haiku 5.5) is in
+`docs/TOOL_COMPARISON.md`. Two things only the student can do: commit her own edits as `[manual]`, and explain and
+modify the code live at the viva (Section 8). See `docs/AI_TOOLS.md`.
