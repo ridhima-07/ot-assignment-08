@@ -1,0 +1,714 @@
+{
+  "F1_baseline_vs_optimised": {
+    "sum_invariant": {
+      "outputs_equal_vm": true,
+      "outputs_equal_native": true,
+      "output": [
+        16042000
+      ],
+      "dyn_instr": [
+        30013,
+        18005
+      ],
+      "cycles": [
+        38013,
+        18005
+      ],
+      "static_size": [
+        26,
+        12
+      ],
+      "compile_ms_opt_passes": 0.9885550002763921,
+      "native_secs_gcc_O0": [
+        1.1391368300000977,
+        1.3515049409998028
+      ],
+      "native_speedup": 0.8428654571972178,
+      "binary_bytes": [
+        15960,
+        15960
+      ],
+      "op_mix_before": {
+        "const": 6005,
+        "mov": 6005,
+        "<": 2001,
+        "jz": 2001,
+        "*": 4000,
+        "+": 8000,
+        "jmp": 2000,
+        "print": 1
+      },
+      "op_mix_after": {
+        "const": 2,
+        "<": 2001,
+        "jz": 2001,
+        "shl": 2000,
+        "+": 6000,
+        "mov": 4000,
+        "jmp": 2000,
+        "print": 1
+      }
+    },
+    "cse_poly": {
+      "outputs_equal_vm": true,
+      "outputs_equal_native": true,
+      "output": [
+        2266500
+      ],
+      "dyn_instr": [
+        51009,
+        21005
+      ],
+      "cycles": [
+        66009,
+        24005
+      ],
+      "static_size": [
+        41,
+        17
+      ],
+      "compile_ms_opt_passes": 2.0876170001429273,
+      "native_secs_gcc_O0": [
+        1.21663058599961,
+        0.6371103139999832
+      ],
+      "native_speedup": 1.909607424750688,
+      "binary_bytes": [
+        15960,
+        15960
+      ],
+      "op_mix_before": {
+        "const": 15003,
+        "mov": 7503,
+        "<": 1501,
+        "jz": 1501,
+        "+": 13500,
+        "*": 7500,
+        "-": 3000,
+        "jmp": 1500,
+        "print": 1
+      },
+      "op_mix_after": {
+        "const": 2,
+        "<": 1501,
+        "jz": 1501,
+        "+": 7500,
+        "*": 1500,
+        "shl": 1500,
+        "-": 3000,
+        "mov": 3000,
+        "jmp": 1500,
+        "print": 1
+      }
+    },
+    "primes": {
+      "outputs_equal_vm": true,
+      "outputs_equal_native": true,
+      "output": [
+        78
+      ],
+      "dyn_instr": [
+        60931,
+        49034
+      ],
+      "cycles": [
+        161078,
+        149181
+      ],
+      "static_size": [
+        41,
+        23
+      ],
+      "compile_ms_opt_passes": 2.2824440002295887,
+      "native_secs_gcc_O0": [
+        0.5484760660001484,
+        0.4758225630002926
+      ],
+      "native_speedup": 1.1526903275492868,
+      "binary_bytes": [
+        15960,
+        15960
+      ],
+      "op_mix_before": {
+        "const": 11497,
+        "mov": 7164,
+        "<": 399,
+        "jz": 10657,
+        "*": 5129,
+        "<=": 5129,
+        "+": 5527,
+        "jmp": 5966,
+        "%": 4731,
+        "==": 4731,
+        "print": 1
+      },
+      "op_mix_after": {
+        "const": 1635,
+        "<": 399,
+        "jz": 10259,
+        "*": 5129,
+        "<=": 5129,
+        "+": 5527,
+        "mov": 5527,
+        "jmp": 5966,
+        "%": 4731,
+        "==": 4731,
+        "print": 1
+      }
+    },
+    "matmul": {
+      "outputs_equal_vm": true,
+      "outputs_equal_native": true,
+      "output": [
+        4796
+      ],
+      "dyn_instr": [
+        189869,
+        124645
+      ],
+      "cycles": [
+        541869,
+        460685
+      ],
+      "static_size": [
+        53,
+        37
+      ],
+      "compile_ms_opt_passes": 4.332328000145935,
+      "native_secs_gcc_O0": [
+        0.5599665610002376,
+        0.3787496429999919
+      ],
+      "native_speedup": 1.4784609605566004,
+      "binary_bytes": [
+        15960,
+        15960
+      ],
+      "op_mix_before": {
+        "const": 41243,
+        "mov": 33263,
+        "<": 8841,
+        "jz": 9241,
+        "*": 24000,
+        "+": 48440,
+        "%": 16000,
+        "jmp": 8440,
+        "==": 400,
+        "print": 1
+      },
+      "op_mix_after": {
+        "const": 822,
+        "<": 8841,
+        "jz": 9241,
+        "*": 16020,
+        "+": 48440,
+        "%": 16000,
+        "mov": 16440,
+        "jmp": 8440,
+        "==": 400,
+        "print": 1
+      }
+    },
+    "fib_const": {
+      "outputs_equal_vm": true,
+      "outputs_equal_native": true,
+      "output": [
+        109942
+      ],
+      "dyn_instr": [
+        39027,
+        27008
+      ],
+      "cycles": [
+        102054,
+        84027
+      ],
+      "static_size": [
+        38,
+        15
+      ],
+      "compile_ms_opt_passes": 1.771271999587043,
+      "native_secs_gcc_O0": [
+        2.4087167580000823,
+        2.4970035129999815
+      ],
+      "native_speedup": 0.9646429191868342,
+      "binary_bytes": [
+        15960,
+        15960
+      ],
+      "op_mix_before": {
+        "const": 6011,
+        "*": 3004,
+        "+": 6002,
+        "mov": 12006,
+        "<": 3001,
+        "jz": 3001,
+        "%": 3000,
+        "jmp": 3000,
+        "/": 1,
+        "print": 1
+      },
+      "op_mix_after": {
+        "const": 3,
+        "<": 3001,
+        "jz": 3001,
+        "+": 6000,
+        "%": 3000,
+        "mov": 9000,
+        "jmp": 3000,
+        "shl": 1,
+        "/": 1,
+        "print": 1
+      }
+    }
+  },
+  "F2_ablation_total_cycles": {
+    "none": 909023,
+    "only constprop": 899017,
+    "only copyprop": 909023,
+    "only cse": 909023,
+    "only dce": 897023,
+    "only licm": 788484,
+    "only sr": 909023,
+    "default pipeline (fixpoint)": 735903,
+    "default minus constprop": 753886,
+    "default minus copyprop": 768403,
+    "default minus cse": 746403,
+    "default minus dce": 778377,
+    "default minus licm": 759843,
+    "default minus sr": 742905
+  },
+  "F4_register_allocation": {
+    "sum_invariant": {
+      "variables": 7,
+      "interference_edges": 8,
+      "K=2": {
+        "chaitin": {
+          "spilled": 1,
+          "spill_cost": 22.0,
+          "dyn_mem_ops": 4002,
+          "cycles": 34013,
+          "ms": 0.061919000017951475
+        },
+        "ilp": {
+          "spilled": 1,
+          "spill_cost": 22.0,
+          "dyn_mem_ops": 4002,
+          "cycles": 34013,
+          "ms": 330.84275700002763,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=3": {
+        "chaitin": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 18005,
+          "ms": 0.03856100011034869
+        },
+        "ilp": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 18005,
+          "ms": 7.611935999648267,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=4": {
+        "chaitin": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 18005,
+          "ms": 0.029101999643899035
+        },
+        "ilp": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 18005,
+          "ms": 7.321334000153001,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=6": {
+        "chaitin": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 18005,
+          "ms": 0.02892399970733095
+        },
+        "ilp": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 18005,
+          "ms": 7.197830999757571,
+          "status": "Optimization terminated successfully. (H"
+        }
+      }
+    },
+    "cse_poly": {
+      "variables": 12,
+      "interference_edges": 24,
+      "K=2": {
+        "chaitin": {
+          "spilled": 2,
+          "spill_cost": 63.0,
+          "dyn_mem_ops": 9004,
+          "cycles": 60021,
+          "ms": 0.046082999688223936
+        },
+        "ilp": {
+          "spilled": 2,
+          "spill_cost": 63.0,
+          "dyn_mem_ops": 9004,
+          "cycles": 60021,
+          "ms": 7.538651999766444,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=3": {
+        "chaitin": {
+          "spilled": 1,
+          "spill_cost": 22.0,
+          "dyn_mem_ops": 3002,
+          "cycles": 36013,
+          "ms": 0.05066899984740303
+        },
+        "ilp": {
+          "spilled": 1,
+          "spill_cost": 22.0,
+          "dyn_mem_ops": 3002,
+          "cycles": 36013,
+          "ms": 7.589788000132103,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=4": {
+        "chaitin": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 24005,
+          "ms": 0.04716100011137314
+        },
+        "ilp": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 24005,
+          "ms": 7.655577000150515,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=6": {
+        "chaitin": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 24005,
+          "ms": 0.0483079998048197
+        },
+        "ilp": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 24005,
+          "ms": 7.769978999931482,
+          "status": "Optimization terminated successfully. (H"
+        }
+      }
+    },
+    "primes": {
+      "variables": 12,
+      "interference_edges": 29,
+      "K=2": {
+        "chaitin": {
+          "spilled": 3,
+          "spill_cost": 373.0,
+          "dyn_mem_ops": 13487,
+          "cycles": 203129,
+          "ms": 0.04854100006923545
+        },
+        "ilp": {
+          "spilled": 3,
+          "spill_cost": 373.0,
+          "dyn_mem_ops": 13487,
+          "cycles": 203129,
+          "ms": 7.645531999969535,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=3": {
+        "chaitin": {
+          "spilled": 2,
+          "spill_cost": 142.0,
+          "dyn_mem_ops": 2431,
+          "cycles": 158905,
+          "ms": 0.06078300020817551
+        },
+        "ilp": {
+          "spilled": 2,
+          "spill_cost": 142.0,
+          "dyn_mem_ops": 2431,
+          "cycles": 158905,
+          "ms": 7.803011999840237,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=4": {
+        "chaitin": {
+          "spilled": 1,
+          "spill_cost": 22.0,
+          "dyn_mem_ops": 798,
+          "cycles": 152373,
+          "ms": 0.061935999838169664
+        },
+        "ilp": {
+          "spilled": 1,
+          "spill_cost": 22.0,
+          "dyn_mem_ops": 798,
+          "cycles": 152373,
+          "ms": 8.07167999982994,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=6": {
+        "chaitin": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 149181,
+          "ms": 0.05896800030313898
+        },
+        "ilp": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 149181,
+          "ms": 8.546142999875883,
+          "status": "Optimization terminated successfully. (H"
+        }
+      }
+    },
+    "matmul": {
+      "variables": 23,
+      "interference_edges": 101,
+      "K=2": {
+        "chaitin": {
+          "spilled": 6,
+          "spill_cost": 6963.0,
+          "dyn_mem_ops": 50604,
+          "cycles": 663101,
+          "ms": 0.13922199968874338
+        },
+        "ilp": {
+          "spilled": 6,
+          "spill_cost": 6963.0,
+          "dyn_mem_ops": 50604,
+          "cycles": 663101,
+          "ms": 9.016850000080012,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=3": {
+        "chaitin": {
+          "spilled": 5,
+          "spill_cost": 4763.0,
+          "dyn_mem_ops": 34184,
+          "cycles": 597421,
+          "ms": 0.33677400006126845
+        },
+        "ilp": {
+          "spilled": 5,
+          "spill_cost": 4763.0,
+          "dyn_mem_ops": 34184,
+          "cycles": 597421,
+          "ms": 11.89826500012714,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=4": {
+        "chaitin": {
+          "spilled": 4,
+          "spill_cost": 2763.0,
+          "dyn_mem_ops": 18184,
+          "cycles": 533421,
+          "ms": 0.32097299981614924
+        },
+        "ilp": {
+          "spilled": 4,
+          "spill_cost": 2763.0,
+          "dyn_mem_ops": 18184,
+          "cycles": 533421,
+          "ms": 11.775453000154812,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=6": {
+        "chaitin": {
+          "spilled": 2,
+          "spill_cost": 343.0,
+          "dyn_mem_ops": 524,
+          "cycles": 462781,
+          "ms": 0.23986299993339344
+        },
+        "ilp": {
+          "spilled": 2,
+          "spill_cost": 343.0,
+          "dyn_mem_ops": 524,
+          "cycles": 462781,
+          "ms": 27.244151000104466,
+          "status": "Optimization terminated successfully. (H"
+        }
+      }
+    },
+    "fib_const": {
+      "variables": 9,
+      "interference_edges": 13,
+      "K=2": {
+        "chaitin": {
+          "spilled": 2,
+          "spill_cost": 53.0,
+          "dyn_mem_ops": 15003,
+          "cycles": 144039,
+          "ms": 0.03622700023697689
+        },
+        "ilp": {
+          "spilled": 2,
+          "spill_cost": 53.0,
+          "dyn_mem_ops": 15004,
+          "cycles": 144043,
+          "ms": 8.037008999963291,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=3": {
+        "chaitin": {
+          "spilled": 1,
+          "spill_cost": 22.0,
+          "dyn_mem_ops": 6002,
+          "cycles": 108035,
+          "ms": 0.04579300002660602
+        },
+        "ilp": {
+          "spilled": 1,
+          "spill_cost": 22.0,
+          "dyn_mem_ops": 6002,
+          "cycles": 108035,
+          "ms": 7.827220999843121,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=4": {
+        "chaitin": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 84027,
+          "ms": 0.037836000046809204
+        },
+        "ilp": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 84027,
+          "ms": 7.667892999961623,
+          "status": "Optimization terminated successfully. (H"
+        }
+      },
+      "K=6": {
+        "chaitin": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 84027,
+          "ms": 0.05873000009160023
+        },
+        "ilp": {
+          "spilled": 0,
+          "spill_cost": 0,
+          "dyn_mem_ops": 0,
+          "cycles": 84027,
+          "ms": 7.353505000082805,
+          "status": "Optimization terminated successfully. (H"
+        }
+      }
+    }
+  },
+  "F3_pass_ordering": {
+    "search_space": 1296,
+    "baseline_no_opt": 909023,
+    "exhaustive_best": {
+      "seq": [
+        "licm",
+        "copyprop",
+        "dce",
+        "licm"
+      ],
+      "cycles": 753981,
+      "secs": 7.312057525,
+      "evaluations": 1296
+    },
+    "greedy": {
+      "seq": [
+        "licm",
+        "dce",
+        "licm",
+        "licm"
+      ],
+      "cycles": 777888,
+      "secs": 0.05664501100000052,
+      "evaluations": 24
+    },
+    "default_order_first4": {
+      "seq": [
+        "constprop",
+        "copyprop",
+        "cse",
+        "sr"
+      ],
+      "cycles": 892015
+    },
+    "worst_sequence_cycles": 909023,
+    "median_sequence_cycles": 792772.0,
+    "num_sequences_achieving_best": 3
+  },
+  "F5_fuzzing": {
+    "programs": 1000,
+    "pipelines_per_program": 3,
+    "mismatches": 0,
+    "examples": []
+  },
+  "F4b_regalloc_random_graphs": {
+    "n=30,p=0.2,K=3": {
+      "chaitin_excess_spill_cost_%_mean": 183.77135907570693,
+      "max_%": 650.0,
+      "instances_where_chaitin_suboptimal": 10,
+      "chaitin_ms": 0.17981339997277246,
+      "ilp_ms": 637.6619270000447,
+      "ilp_proved_optimal": 10
+    },
+    "n=30,p=0.3,K=4": {
+      "chaitin_excess_spill_cost_%_mean": 375.3636363636364,
+      "max_%": 1200.0,
+      "instances_where_chaitin_suboptimal": 10,
+      "chaitin_ms": 0.22452830003203417,
+      "ilp_ms": 1855.4263324000203,
+      "ilp_proved_optimal": 10
+    },
+    "n=30,p=0.4,K=5": {
+      "chaitin_excess_spill_cost_%_mean": 495.7692307692308,
+      "max_%": 2200.0,
+      "instances_where_chaitin_suboptimal": 10,
+      "chaitin_ms": 0.26805500010596006,
+      "ilp_ms": 4510.1430171000175,
+      "ilp_proved_optimal": 10
+    }
+  }
+}
