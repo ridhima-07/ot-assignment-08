@@ -1,0 +1,125 @@
+{
+  "F1_fedavg": {
+    "centralised_optimum": {
+      "f*": 0.5268778591696381,
+      "test_acc": 0.721
+    },
+    "target_suboptimality": 0.002,
+    "centralised_minibatch_SGD(same total gradient steps as FedAvg E=5)": {
+      "final_subopt_mean": 0.001569159832642808,
+      "note": "needs a model exchange every step if run across clients: rounds*E*K messages"
+    },
+    "IID E=1": {
+      "final_subopt_mean": 0.07749607594456576,
+      "final_subopt_std": 0.00046209381198465064,
+      "test_acc_final": 0.693,
+      "rounds_to_target_mean": null,
+      "runs_reaching_target": "0/5",
+      "floats_communicated_to_target": null
+    },
+    "IID E=5": {
+      "final_subopt_mean": 0.014454155021389869,
+      "final_subopt_std": 0.00036835884406431557,
+      "test_acc_final": 0.714,
+      "rounds_to_target_mean": null,
+      "runs_reaching_target": "0/5",
+      "floats_communicated_to_target": null
+    },
+    "IID E=20": {
+      "final_subopt_mean": 0.0003981378725548934,
+      "final_subopt_std": 2.6144252582699672e-05,
+      "test_acc_final": 0.72,
+      "rounds_to_target_mean": 37.2,
+      "runs_reaching_target": "5/5",
+      "floats_communicated_to_target": 15624.0
+    },
+    "IID E=50": {
+      "final_subopt_mean": 0.00016266681869487877,
+      "final_subopt_std": 6.54024506021893e-05,
+      "test_acc_final": 0.722,
+      "rounds_to_target_mean": 15.0,
+      "runs_reaching_target": "5/5",
+      "floats_communicated_to_target": 6300.0
+    },
+    "non-IID E=1": {
+      "final_subopt_mean": 0.07762512589178294,
+      "final_subopt_std": 0.0019355420028927468,
+      "test_acc_final": 0.683,
+      "rounds_to_target_mean": null,
+      "runs_reaching_target": "0/5",
+      "floats_communicated_to_target": null
+    },
+    "non-IID E=5": {
+      "final_subopt_mean": 0.017348940356897425,
+      "final_subopt_std": 0.0017378224784622574,
+      "test_acc_final": 0.707,
+      "rounds_to_target_mean": null,
+      "runs_reaching_target": "0/5",
+      "floats_communicated_to_target": null
+    },
+    "non-IID E=20": {
+      "final_subopt_mean": 0.002710852937229169,
+      "final_subopt_std": 0.0009260794948657254,
+      "test_acc_final": 0.707,
+      "rounds_to_target_mean": 50.5,
+      "runs_reaching_target": "2/5",
+      "floats_communicated_to_target": 21210.0
+    },
+    "non-IID E=50": {
+      "final_subopt_mean": 0.0024052362020595018,
+      "final_subopt_std": 0.0008770834832616033,
+      "test_acc_final": 0.712,
+      "rounds_to_target_mean": 25.5,
+      "runs_reaching_target": "2/5",
+      "floats_communicated_to_target": 10710.0
+    }
+  },
+  "M1_multitask": {
+    "equal": {
+      "task1_rel_val_loss": [
+        0.022791715382648042,
+        0.009956865852921716
+      ],
+      "task2_rel_val_loss": [
+        9.790068948052955e-05,
+        2.4182891520673267e-05
+      ],
+      "mean_rel_loss": 0.011444808036064286,
+      "example_final_task_weights": [
+        1.0,
+        1.0
+      ]
+    },
+    "MGDA": {
+      "task1_rel_val_loss": [
+        0.0070218512998063325,
+        0.00526492363741047
+      ],
+      "task2_rel_val_loss": [
+        0.20651475089144897,
+        0.01534880475124934
+      ],
+      "mean_rel_loss": 0.10676830109562765,
+      "example_final_task_weights": [
+        2.0,
+        0.0
+      ]
+    },
+    "GradNorm": {
+      "task1_rel_val_loss": [
+        0.006634001144306884,
+        0.003110397761447872
+      ],
+      "task2_rel_val_loss": [
+        0.007644433002243536,
+        0.0013706049075770529
+      ],
+      "mean_rel_loss": 0.007139217073275209,
+      "example_final_task_weights": [
+        1.977,
+        0.023
+      ]
+    },
+    "note": "rel loss = validation MSE / variance of target (1.0 = no better than predicting the mean). (mean, std) over 5 seeds."
+  }
+}

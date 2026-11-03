@@ -1,0 +1,53 @@
+{
+  "coverage_property_test": {
+    "trials": 3000,
+    "diminishing_returns_violations": 0,
+    "monotonicity_violations": 0,
+    "worst_violation": 0.0
+  },
+  "coverage_greedy_vs_opt": {
+    "3": {
+      "greedy/OPT_mean": 0.9949509803921568,
+      "greedy/OPT_min": 0.9784313725490196,
+      "bound_1-1/e": 0.6321205588285577,
+      "bound_holds": true,
+      "oracle_calls_greedy": 63.0,
+      "oracle_calls_lazy": 28.4
+    },
+    "4": {
+      "greedy/OPT_mean": 0.9704814622358382,
+      "greedy/OPT_min": 0.9386503067484663,
+      "bound_1-1/e": 0.6321205588285577,
+      "bound_holds": true,
+      "oracle_calls_greedy": 81.0,
+      "oracle_calls_lazy": 36.2
+    },
+    "5": {
+      "greedy/OPT_mean": 0.9710848335222341,
+      "greedy/OPT_min": 0.9481382978723404,
+      "bound_1-1/e": 0.6321205588285577,
+      "bound_holds": true,
+      "oracle_calls_greedy": 98.0,
+      "oracle_calls_lazy": 40.8
+    }
+  },
+  "large_n300_k25": {
+    "greedy_calls": 7225,
+    "lazy_calls": 494,
+    "greedy_secs": 0.10750789500002611,
+    "lazy_secs": 0.005629587000044012,
+    "same_value": true
+  },
+  "complementary_property_test": {
+    "trials": 3000,
+    "diminishing_returns_violations": 209,
+    "monotonicity_violations": 0,
+    "worst_violation": 240.0
+  },
+  "complementary_greedy/OPT_by_k": [
+    0.9762282091917591,
+    1.0,
+    1.0
+  ],
+  "note": "Guarantee claimed only for the coverage objective, whose property test shows zero violations."
+}

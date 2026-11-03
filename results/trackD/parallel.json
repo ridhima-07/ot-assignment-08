@@ -1,0 +1,372 @@
+{
+  "machine": {
+    "cpus": 2
+  },
+  "P1_P2_scheduling_measured": {
+    "block": {
+      "1": {
+        "secs": 0.1959,
+        "std": 0.0018234582528810466,
+        "speedup": 1.0050025523226136,
+        "efficiency": 1.0050025523226136,
+        "imbalance(max/mean busy)": 1.0,
+        "steals": 0
+      },
+      "2": {
+        "secs": 0.17542,
+        "std": 0.0026262140049889346,
+        "speedup": 1.1223349675065557,
+        "efficiency": 0.5611674837532779,
+        "imbalance(max/mean busy)": 1.7676000000000003,
+        "steals": 0
+      },
+      "4": {
+        "secs": 0.15106,
+        "std": 0.007379227601856438,
+        "speedup": 1.303323182841255,
+        "efficiency": 0.32583079571031376,
+        "imbalance(max/mean busy)": 2.5183999999999997,
+        "steals": 0
+      }
+    },
+    "cyclic": {
+      "1": {
+        "secs": 0.19644,
+        "std": 0.00046690470119714443,
+        "speedup": 1.0136428425982489,
+        "efficiency": 1.0136428425982489,
+        "imbalance(max/mean busy)": 1.0,
+        "steals": 0
+      },
+      "2": {
+        "secs": 0.09870000000000001,
+        "std": 0.0005338539126015659,
+        "speedup": 2.0174265450861197,
+        "efficiency": 1.0087132725430599,
+        "imbalance(max/mean busy)": 1.0046,
+        "steals": 0
+      },
+      "4": {
+        "secs": 0.09998,
+        "std": 0.0012316655390161766,
+        "speedup": 1.991598319663933,
+        "efficiency": 0.49789957991598327,
+        "imbalance(max/mean busy)": 1.0499999999999998,
+        "steals": 0
+      }
+    },
+    "central": {
+      "1": {
+        "secs": 0.19874,
+        "std": 0.003094834405909301,
+        "speedup": 0.9871188487471068,
+        "efficiency": 0.9871188487471068,
+        "imbalance(max/mean busy)": 1.0,
+        "steals": 0
+      },
+      "2": {
+        "secs": 0.10191999999999998,
+        "std": 0.002417022962240944,
+        "speedup": 1.9248430141287287,
+        "efficiency": 0.9624215070643644,
+        "imbalance(max/mean busy)": 1.0056,
+        "steals": 0
+      },
+      "4": {
+        "secs": 0.10074000000000001,
+        "std": 0.0013221195104830728,
+        "speedup": 1.9473893190391103,
+        "efficiency": 0.48684732975977757,
+        "imbalance(max/mean busy)": 1.0393999999999999,
+        "steals": 0
+      }
+    },
+    "steal": {
+      "1": {
+        "secs": 0.19892,
+        "std": 0.0024661711213944636,
+        "speedup": 1.0024130303639653,
+        "efficiency": 1.0024130303639653,
+        "imbalance(max/mean busy)": 1.0,
+        "steals": 0
+      },
+      "2": {
+        "secs": 0.10016,
+        "std": 0.0013758633653092177,
+        "speedup": 1.990814696485623,
+        "efficiency": 0.9954073482428115,
+        "imbalance(max/mean busy)": 1.0004,
+        "steals": 764
+      },
+      "4": {
+        "secs": 0.10056000000000001,
+        "std": 0.0016071714283174632,
+        "speedup": 1.9828957836117738,
+        "efficiency": 0.49572394590294344,
+        "imbalance(max/mean busy)": 1.0402,
+        "steals": 698
+      }
+    }
+  },
+  "P2_amdahl_gustafson": {
+    "karp_flatt_serial_fraction_p2": 0.004613841524573781,
+    "amdahl_predicted_speedup": {
+      "2": 1.9908146964856228,
+      "4": 3.945389790265136,
+      "8": 7.7497085114652124,
+      "16": 14.964352720450268,
+      "64": 49.58657133975739
+    },
+    "gustafson_scaled_speedup": {
+      "2": 1.9953861584754262,
+      "4": 3.9861584754262784,
+      "8": 7.967703109327983,
+      "16": 15.930792377131393,
+      "64": 63.70932798395185
+    },
+    "note": "Only 2 hardware threads are available: p=4 is oversubscribed, larger p are model predictions."
+  },
+  "P3_locality": [
+    {
+      "n": 256,
+      "ijk_secs": 0.0184,
+      "ikj_secs": 0.0108,
+      "blocked64_secs": 0.0144,
+      "results_agree": true,
+      "ijk_secs_mean": 0.018433333333333333,
+      "ijk_secs_std": 0.00015275252316519376,
+      "ikj_secs_mean": 0.010799999999999999,
+      "ikj_secs_std": 2.1245936804851847e-18,
+      "blocked64_secs_mean": 0.014666666666666666,
+      "blocked64_secs_std": 0.0004618802153517008
+    },
+    {
+      "n": 512,
+      "ijk_secs": 0.4299,
+      "ikj_secs": 0.0915,
+      "blocked64_secs": 0.1436,
+      "results_agree": true,
+      "ijk_secs_mean": 0.42419999999999997,
+      "ijk_secs_std": 0.01311449579663663,
+      "ikj_secs_mean": 0.0931,
+      "ikj_secs_std": 0.00196977156035922,
+      "blocked64_secs_mean": 0.14513333333333334,
+      "blocked64_secs_std": 0.003650114153466068
+    },
+    {
+      "n": 800,
+      "ijk_secs": 0.7559,
+      "ikj_secs": 0.3563,
+      "blocked64_secs": 0.4262,
+      "results_agree": true,
+      "ijk_secs_mean": 0.7472,
+      "ijk_secs_std": 0.023018036406261943,
+      "ikj_secs_mean": 0.33916666666666667,
+      "ikj_secs_std": 0.014923918162913295,
+      "blocked64_secs_mean": 0.39549999999999996,
+      "blocked64_secs_std": 0.027665682713426773
+    }
+  ],
+  "P4_sync": {
+    "mutex": {
+      "1": {
+        "threads": 1,
+        "mode": "mutex",
+        "secs": 0.0802,
+        "correct": true,
+        "secs_mean": 0.07872,
+        "secs_std": 0.0026376125568399926
+      },
+      "2": {
+        "threads": 2,
+        "mode": "mutex",
+        "secs": 0.2098,
+        "correct": true,
+        "secs_mean": 0.29594,
+        "secs_std": 0.048504566795302906
+      }
+    },
+    "atomic": {
+      "1": {
+        "threads": 1,
+        "mode": "atomic",
+        "secs": 0.0273,
+        "correct": true,
+        "secs_mean": 0.026120000000000004,
+        "secs_std": 0.0006760177512462233
+      },
+      "2": {
+        "threads": 2,
+        "mode": "atomic",
+        "secs": 0.0604,
+        "correct": true,
+        "secs_mean": 0.06728,
+        "secs_std": 0.004898162920932704
+      }
+    },
+    "local": {
+      "1": {
+        "threads": 1,
+        "mode": "local",
+        "secs": 0.0019,
+        "correct": true,
+        "secs_mean": 0.00182,
+        "secs_std": 8.36660026534076e-05
+      },
+      "2": {
+        "threads": 2,
+        "mode": "local",
+        "secs": 0.0012,
+        "correct": true,
+        "secs_mean": 0.00104,
+        "secs_std": 0.00013416407864998739
+      }
+    }
+  },
+  "P5_comm": {
+    "1KB_work1": {
+      "serial_s": 6.38890001027903e-05,
+      "pool2_s": 0.005780469000001176,
+      "speedup": 0.011052563399747894
+    },
+    "1KB_work50": {
+      "serial_s": 0.0018807520000336808,
+      "pool2_s": 0.004111309000109031,
+      "speedup": 0.45745819640017416
+    },
+    "1000KB_work1": {
+      "serial_s": 8.785600016381068e-05,
+      "pool2_s": 0.03792003199987448,
+      "speedup": 0.002316875686289017
+    },
+    "1000KB_work50": {
+      "serial_s": 0.0023584770001434663,
+      "pool2_s": 0.05837373300005311,
+      "speedup": 0.040403052519209635
+    },
+    "10000KB_work1": {
+      "serial_s": 0.00013296400015860854,
+      "pool2_s": 0.6189046920001147,
+      "speedup": 0.00021483760242454892
+    },
+    "10000KB_work50": {
+      "serial_s": 0.002542191999964416,
+      "pool2_s": 0.5491585390000182,
+      "speedup": 0.00462924969644209
+    }
+  },
+  "P6_parallelism": {
+    "data_parallel": {
+      "grad_max_abs_err_vs_full_batch": 6.821210263296962e-13,
+      "serial_s": 0.06243809599982342,
+      "2proc_s": 0.040154874000108975,
+      "speedup": 1.5549319367719587
+    },
+    "model_parallel(tensor)": {
+      "output_max_abs_err": 0.0,
+      "serial_s": 0.029240021999839882,
+      "2proc_s": 0.02214243699995677,
+      "speedup": 1.3205421787988814
+    },
+    "pipeline_parallel(simulated GPipe)": {
+      "S=2,M=1": {
+        "bubble_fraction": 0.5,
+        "speedup_vs_1stage": 1.0
+      },
+      "S=2,M=2": {
+        "bubble_fraction": 0.3333333333333333,
+        "speedup_vs_1stage": 1.3333333333333333
+      },
+      "S=2,M=4": {
+        "bubble_fraction": 0.2,
+        "speedup_vs_1stage": 1.6
+      },
+      "S=2,M=8": {
+        "bubble_fraction": 0.1111111111111111,
+        "speedup_vs_1stage": 1.7777777777777777
+      },
+      "S=2,M=16": {
+        "bubble_fraction": 0.058823529411764705,
+        "speedup_vs_1stage": 1.8823529411764706
+      },
+      "S=2,M=32": {
+        "bubble_fraction": 0.030303030303030304,
+        "speedup_vs_1stage": 1.9393939393939394
+      },
+      "S=4,M=1": {
+        "bubble_fraction": 0.75,
+        "speedup_vs_1stage": 1.0
+      },
+      "S=4,M=2": {
+        "bubble_fraction": 0.6,
+        "speedup_vs_1stage": 1.6
+      },
+      "S=4,M=4": {
+        "bubble_fraction": 0.42857142857142855,
+        "speedup_vs_1stage": 2.2857142857142856
+      },
+      "S=4,M=8": {
+        "bubble_fraction": 0.2727272727272727,
+        "speedup_vs_1stage": 2.909090909090909
+      },
+      "S=4,M=16": {
+        "bubble_fraction": 0.15789473684210525,
+        "speedup_vs_1stage": 3.3684210526315788
+      },
+      "S=4,M=32": {
+        "bubble_fraction": 0.08571428571428572,
+        "speedup_vs_1stage": 3.657142857142857
+      }
+    },
+    "pipeline_parallel(measured 2 stages)": {
+      "M=1": {
+        "serial_s": 0.030648126999949454,
+        "pipeline_s": 0.13372547499989196,
+        "speedup": 0.2291868995041836,
+        "result_matches": true
+      },
+      "M=4": {
+        "serial_s": 0.030648126999949454,
+        "pipeline_s": 0.05573252800013506,
+        "speedup": 0.5499145310594055,
+        "result_matches": true
+      },
+      "M=16": {
+        "serial_s": 0.030648126999949454,
+        "pipeline_s": 0.035287410999899294,
+        "speedup": 0.8685286375936427,
+        "result_matches": true
+      }
+    }
+  },
+  "P7_sched_simulated": {
+    "block": {
+      "1": 1.0,
+      "2": 1.1346028056295492,
+      "4": 1.4392358037123958,
+      "8": 1.9340866645392454,
+      "16": 2.754454175507766
+    },
+    "cyclic": {
+      "1": 1.0,
+      "2": 1.9868970002971276,
+      "4": 3.917278489518009,
+      "8": 7.61016327448678,
+      "16": 14.303394343818372
+    },
+    "central": {
+      "1": 0.9986872482201968,
+      "2": 1.9832344169371101,
+      "4": 3.907219014439877,
+      "8": 7.583343026222922,
+      "16": 14.236477602869652
+    },
+    "steal": {
+      "1": 1.0000000000000027,
+      "2": 1.9902068598207054,
+      "4": 3.9421166878797367,
+      "8": 7.668717471445046,
+      "16": 14.684359736293946
+    }
+  }
+}
