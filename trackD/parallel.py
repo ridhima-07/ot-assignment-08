@@ -46,11 +46,15 @@ def p1_p2_sched():
             out[s][p] = {"secs": r["secs_mean"], "std": r["secs_std"], "speedup": base / r["secs_mean"],
                          "efficiency": base / r["secs_mean"] / p, "imbalance(max/mean busy)": r["imbalance"],
                          "steals": r.get("steals", 0)}
-    # Karp-Flatt experimentally determined serial fraction e = (1/S - 1/p)/(1 - 1/p) for p = 2
+    # Karp-Flatt experimentally determined serial fraction e = (1/S - 1/p)/(1 - 1/p) for p = 2.
+    # With only 2 cores, timing noise can push S slightly above 2, giving e < 0 (meaningless); we then report
+    # e as "indistinguishable from 0" and show Amdahl/Gustafson for a range of serial fractions instead of
+    # extrapolating from a single noisy point. (First version extrapolated a negative e to 21x at 16 cores.)
     S2 = out["steal"][2]["speedup"]; e = (1 / S2 - 1 / 2) / (1 - 1 / 2)
-    amdahl = {"karp_flatt_serial_fraction_p2": e,
-              "amdahl_predicted_speedup": {p: 1 / (e + (1 - e) / p) for p in [2, 4, 8, 16, 64]},
-              "gustafson_scaled_speedup": {p: p - e * (p - 1) for p in [2, 4, 8, 16, 64]},
+    amdahl = {"karp_flatt_serial_fraction_p2_raw": e, "karp_flatt_serial_fraction_p2": max(e, 0.0),
+              "interpretation": "within timing noise of 0 on 2 cores (repeat runs gave -0.016 and +0.016)" if abs(e) < 0.03 else "measurable serial fraction",
+              "amdahl_speedup_by_serial_fraction": {str(f): {str(p): 1 / (f + (1 - f) / p) for p in [2, 4, 8, 16, 64]} for f in [0.01, 0.05, 0.1]},
+              "gustafson_speedup_by_serial_fraction": {str(f): {str(p): p - f * (p - 1) for p in [2, 4, 8, 16, 64]} for f in [0.01, 0.05, 0.1]},
               "note": f"Only {NCPU} hardware threads are available: p=4 is oversubscribed, larger p are model predictions."}
     return out, amdahl
 

@@ -13,7 +13,7 @@ METHODS
             y <= x_i, at most one index per (query, table), size budget; benefits b_{q,i} from what-if
   all       every candidate (no storage limit) as a reference
 Then each configuration is BUILT for real, ANALYZEd and the workload is executed:
-median latency of 5 warm runs, storage, and an md5 of every query's result set (must match default).
+median latency of 15 warm runs, storage, and an md5 of every query's result set (must match default).
 """
 import sys, os, json, time, hashlib, statistics
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -130,7 +130,7 @@ def ilp(cur, sizes, budget, single_benefit):
     return [i for i in range(n) if res.x[i] > 0.5], time.perf_counter() - t0, -res.fun
 
 
-def execute(cur, config, reps=5):
+def execute(cur, config, reps=15):
     """Build the configuration for real and run the workload. Returns latencies, storage, result hashes."""
     cur.execute("SELECT indexname FROM pg_indexes WHERE schemaname='public' AND indexname LIKE 'a8_%'")
     for (n,) in cur.fetchall(): cur.execute(f"DROP INDEX {n}")
@@ -143,7 +143,12 @@ def execute(cur, config, reps=5):
     storage = int(cur.fetchone()[0])
     lat, hashes, plans = {}, {}, {}
     for q, (w, sql) in WORKLOAD.items():
-        cur.execute(sql); rows = cur.fetchall(); hashes[q] = hashlib.md5(repr(rows).encode()).hexdigest()   # warm-up + result
+        cur.execute(sql); rows = cur.fetchall()                                                           # warm-up + result
+        # SQL defines row order only under ORDER BY, so compare the multiset of rows for every query, and the exact
+        # sequence for queries with ORDER BY. (First version hashed the raw sequence and flagged supp_parts, which has
+        # no ORDER BY, as "different" once an index scan changed the row order.)
+        key = sorted(rows, key=repr) if "ORDER BY" not in sql.upper() else rows
+        hashes[q] = hashlib.md5(repr(key).encode()).hexdigest()
         ts = []
         for _ in range(reps):
             t1 = time.perf_counter(); cur.execute(sql); cur.fetchall(); ts.append(time.perf_counter() - t1)

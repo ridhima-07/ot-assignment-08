@@ -53,8 +53,8 @@
       "query_ratio_classical/grover": 2.575,
       "cx_gates": 2,
       "depth": 11,
-      "statevector_sim_secs": 0.008769792999828496,
-      "classical_search_secs": 8.895139999367529e-06
+      "statevector_sim_secs": 0.0010227439997834153,
+      "classical_search_secs": 7.147655001062958e-06
     },
     "3": {
       "N": 8,
@@ -64,8 +64,8 @@
       "query_ratio_classical/grover": 2.295,
       "cx_gates": 24,
       "depth": 55,
-      "statevector_sim_secs": 0.0014096610002525267,
-      "classical_search_secs": 6.462204999024834e-06
+      "statevector_sim_secs": 0.0016390929995395709,
+      "classical_search_secs": 1.0891994998019073e-05
     },
     "4": {
       "N": 16,
@@ -75,8 +75,8 @@
       "query_ratio_classical/grover": 2.8233333333333337,
       "cx_gates": 84,
       "depth": 171,
-      "statevector_sim_secs": 0.010675767000066116,
-      "classical_search_secs": 6.549040001573303e-06
+      "statevector_sim_secs": 0.010985302999870328,
+      "classical_search_secs": 7.175985001595109e-06
     },
     "5": {
       "N": 32,
@@ -86,8 +86,8 @@
       "query_ratio_classical/grover": 4.13125,
       "cx_gates": 288,
       "depth": 627,
-      "statevector_sim_secs": 0.028761350999957358,
-      "classical_search_secs": 6.898255001033249e-06
+      "statevector_sim_secs": 0.02926926899999671,
+      "classical_search_secs": 1.6381309997086646e-05
     },
     "6": {
       "N": 64,
@@ -97,8 +97,8 @@
       "query_ratio_classical/grover": 5.273333333333333,
       "cx_gates": 984,
       "depth": 1300,
-      "statevector_sim_secs": 0.035625579000225116,
-      "classical_search_secs": 7.129335001536674e-06
+      "statevector_sim_secs": 0.0660771240000031,
+      "classical_search_secs": 8.035880000534235e-06
     },
     "7": {
       "N": 128,
@@ -108,8 +108,8 @@
       "query_ratio_classical/grover": 8.10125,
       "cx_gates": 1952,
       "depth": 2173,
-      "statevector_sim_secs": 0.07313640400025179,
-      "classical_search_secs": 9.278694999466098e-06
+      "statevector_sim_secs": 0.07582881600046676,
+      "classical_search_secs": 8.409655001742068e-06
     },
     "8": {
       "N": 256,
@@ -119,8 +119,8 @@
       "query_ratio_classical/grover": 10.834583333333333,
       "cx_gates": 4080,
       "depth": 3929,
-      "statevector_sim_secs": 0.14893125199978385,
-      "classical_search_secs": 1.0884920000080456e-05
+      "statevector_sim_secs": 0.16343884500020067,
+      "classical_search_secs": 1.0526555001888482e-05
     },
     "9": {
       "N": 512,
@@ -130,8 +130,8 @@
       "query_ratio_classical/grover": 16.013823529411766,
       "cx_gates": 7684,
       "depth": 6532,
-      "statevector_sim_secs": 0.2907792780001728,
-      "classical_search_secs": 1.3762589999259944e-05
+      "statevector_sim_secs": 0.32982192000054056,
+      "classical_search_secs": 1.4288889997260412e-05
     },
     "10": {
       "N": 1024,
@@ -141,12 +141,12 @@
       "query_ratio_classical/grover": 20.5792,
       "cx_gates": 14500,
       "depth": 10980,
-      "statevector_sim_secs": 0.5523381200000586,
-      "classical_search_secs": 1.948146000131601e-05
+      "statevector_sim_secs": 0.6107358939998448,
+      "classical_search_secs": 2.721875499901216e-05
     },
     "noisy_device_model_n3": {
       "ideal_P(marked)": 0.93701171875,
-      "FakeManila_P(marked)": 0.553955078125,
+      "FakeManila_P(marked)": 0.5625,
       "random_guess": 0.125,
       "transpiled_cx": 37,
       "transpiled_depth": 94
@@ -516,37 +516,37 @@
   },
   "I8_qml_vs_classical": {
     "VQC (data re-uploading, 12 params)": {
-      "test_acc_mean": 0.06666666666666668,
-      "test_acc_std": 0.06972166887783963,
-      "train_secs_mean": 19.819933512200077,
+      "test_acc_mean": 0.9333333333333332,
+      "test_acc_std": 0.06972166887783961,
+      "train_secs_mean": 21.699844746200142,
       "circuit_evaluations_mean": 126036.0,
       "trainable_params": 12
     },
     "Quantum kernel SVM (ZZ map)": {
       "test_acc_mean": 0.7777777777777778,
       "test_acc_std": 0.07349309197401643,
-      "train_secs_mean": 0.008740540400049212,
+      "train_secs_mean": 0.008219750599710095,
       "circuit_evaluations_mean": 6510.0,
       "trainable_params": "n_support (dual)"
     },
     "Logistic regression": {
       "test_acc_mean": 0.8833333333333334,
       "test_acc_std": 0.030429030972509184,
-      "train_secs_mean": 0.0026351709999289596,
+      "train_secs_mean": 0.00241597099993669,
       "circuit_evaluations_mean": 0.0,
       "trainable_params": 3
     },
     "RBF-SVM": {
       "test_acc_mean": 0.9722222222222221,
       "test_acc_std": 0.0340206908719886,
-      "train_secs_mean": 0.0009400848000041151,
+      "train_secs_mean": 0.00120683379991533,
       "circuit_evaluations_mean": 0.0,
       "trainable_params": "n_support (dual)"
     },
     "MLP (16 hidden)": {
       "test_acc_mean": 0.8666666666666668,
       "test_acc_std": 0.030429030972509197,
-      "train_secs_mean": 0.17212835999998788,
+      "train_secs_mean": 0.17113388340003438,
       "circuit_evaluations_mean": 0.0,
       "trainable_params": 65
     },

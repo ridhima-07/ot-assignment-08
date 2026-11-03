@@ -34,8 +34,8 @@
   "large_n300_k25": {
     "greedy_calls": 7225,
     "lazy_calls": 494,
-    "greedy_secs": 0.10750789500002611,
-    "lazy_secs": 0.005629587000044012,
+    "greedy_secs": 0.08892592200027138,
+    "lazy_secs": 0.0062044309997872915,
     "same_value": true
   },
   "complementary_property_test": {

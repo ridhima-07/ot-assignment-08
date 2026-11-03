@@ -2,7 +2,7 @@
 
 Every entry below happened during development with **Claude Opus 5.5** (see `AI_TOOLS.md`). Each was caught by a
 verification step that is still in the repository, so it can be re-checked. The assignment asks for at least three;
-eleven are recorded because each taught something different.
+fifteen are recorded because each taught something different.
 
 | # | Track | What the AI produced | How it was caught | Fix | Lesson |
 |---|---|---|---|---|---|
@@ -17,12 +17,15 @@ eleven are recorded because each taught something different.
 | 9 | G | MLFQ without the preemption rule: a demoted CPU hog kept the CPU for its whole 4-tick quantum when an interactive job woke up. Interactive turnaround got **51% worse** than round robin (22 → 33 ticks). | Benchmark W2. | `sched_tick()` now yields when a higher-priority process is RUNNABLE. | "Compiles and boots" ≠ correct policy. An AI-written scheduler omitted a defining rule of MLFQ. |
 | 10 | G | Kernel patch: `copyout` called with the wrong number of arguments (this xv6 revision has a `psz` parameter); inserted code also split `int` from `uvmcopy`'s name. | `-Werror` build failure. | Matched the tree's real signature. | AI tools assume the textbook xv6 API; read the actual tree. |
 | 11 | I | Variational classifier predicted class 1 when ⟨Z⟩ < 0, but trained class 1 towards ⟨Z⟩ = +1 → **6.7% test accuracy** (every label inverted). | Accuracy far *below* chance on a 2-class problem. | Predict class 1 when ⟨Z⟩ > 0. | Below-chance accuracy means a sign/label bug, not a weak model. |
-
-## Measurement pitfalls (not bugs, but misleading if reported naively)
+| 12 | H | Result-equality check hashed the raw row sequence, so `supp_parts` (no `ORDER BY`) was flagged as a **wrong answer** under every index configuration. | Only the one query without `ORDER BY` differed. | Compare the row multiset for every query; exact order only where `ORDER BY` defines it. | A correctness check can itself be wrong; know the semantics you are checking (SQL row order is undefined). |
+| 13 | G | Stats code in `allocproc()` and `kexit()` took `tickslock` **while holding `p->lock`**. `clockintr()` holds `tickslock` and calls `wakeup()`, which takes every `p->lock` → lock-order inversion → **deadlock under SMP**. It compiled, booted, passed the benchmarks (1 CPU) and the isolation test. | Full `usertests` on 3 CPUs: `reparent` hung/failed, including with both new features switched OFF — which pointed away from COW/MLFQ to the shared stats code. | Read `ticks` without the lock (a racy read is fine for statistics). `reparent` then passes in all four feature combinations. | The classic AI kernel bug the assignment warns about: compiles, boots, *mostly* works. Only the stress test on multiple CPUs exposed it. Always run `usertests` with `-smp > 1`. |
+| 14 | J | Per-test coverage keyed by coverage.py context ids; inherited tests are recorded under the **defining mixin class**, but pytest runs them under the subclass → lines covered only by those tests were uncoverable, and the ILP was **infeasible**. | HiGHS returned no solution; diffing context ids vs junit ids found 4 mixin-only ids. | Map mixin contexts onto the subclasses' test ids; restrict the universe to lines selectable tests cover. | Join keys between two tools' outputs need checking; an "infeasible" solver result often means a data bug. |
+| 15 | H / D | (a) The TPC-H loader ran `sed file | psql` under `set -e` only; with the data path wrong, `sed` failed inside the pipe and **empty tables were loaded silently**, and the index experiment ran on them. (b) A Karp–Flatt serial fraction of **−0.016** (timing noise) was extrapolated to a 21× Amdahl prediction. | (a) Re-reading the run log ("can't read …tbl") after a "successful" run. (b) A negative serial fraction is physically meaningless. | (a) `set -euo pipefail` + an explicit check that every `.tbl` exists. (b) Report the fraction as within noise and show predictions for assumed fractions. | Exit code 0 is not evidence of success; and never extrapolate from one noisy point. |
+ (not bugs, but misleading if reported naively)
 
 * **Track D, 2-thread timings were initially ~1.0×** because the Track C simulation was occupying the second core. All
   parallel timings were re-measured on an idle machine.
-* **Track F, `sum_invariant` runs 15% slower natively** after optimisation even though it executes 40% fewer IR
+* **Track F, `sum_invariant` runs 10–15% slower natively** after optimisation even though it executes 40% fewer IR
   instructions. At `gcc -O0` every variable lives on the stack; run time is set by the loop-carried
   store→load chain through `s` and `i`, which both versions share. IR instruction count is not run time.
 * **Track F, Chaitin vs ILP** percentages look huge (up to +2200%) because optimal spill costs are tiny (e.g. 1 vs 13).

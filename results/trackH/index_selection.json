@@ -1,0 +1,563 @@
+{
+  "candidates": [
+    {
+      "index": "orders(o_custkey)",
+      "est_bytes": 3915776
+    },
+    {
+      "index": "orders(o_custkey, o_orderdate)",
+      "est_bytes": 6266880
+    },
+    {
+      "index": "orders(o_orderdate)",
+      "est_bytes": 3915776
+    },
+    {
+      "index": "orders(o_orderstatus, o_orderdate)",
+      "est_bytes": 5873664
+    },
+    {
+      "index": "lineitem(l_shipdate)",
+      "est_bytes": 15687680
+    },
+    {
+      "index": "lineitem(l_partkey)",
+      "est_bytes": 15687680
+    },
+    {
+      "index": "lineitem(l_suppkey)",
+      "est_bytes": 15687680
+    },
+    {
+      "index": "lineitem(l_receiptdate)",
+      "est_bytes": 15687680
+    },
+    {
+      "index": "lineitem(l_shipdate, l_discount, l_quantity)",
+      "est_bytes": 41574400
+    },
+    {
+      "index": "lineitem(l_shipmode, l_receiptdate)",
+      "est_bytes": 30597120
+    },
+    {
+      "index": "partsupp(ps_suppkey)",
+      "est_bytes": 2088960
+    },
+    {
+      "index": "customer(c_nationkey, c_mktsegment)",
+      "est_bytes": 761856
+    },
+    {
+      "index": "customer(c_mktsegment)",
+      "est_bytes": 524288
+    },
+    {
+      "index": "part(p_type, p_size)",
+      "est_bytes": 1277952
+    },
+    {
+      "index": "part(p_size)",
+      "est_bytes": 516096
+    },
+    {
+      "index": "supplier(s_nationkey)",
+      "est_bytes": 24576
+    }
+  ],
+  "whatif_default_cost": 1225980.67,
+  "selection": {
+    "10%": {
+      "budget_bytes": 16008806.4,
+      "greedy": {
+        "config": [
+          0,
+          10,
+          11,
+          13,
+          3,
+          12
+        ],
+        "whatif_cost": 937292.0800000001,
+        "whatif_saving_%": 23.547564579464364,
+        "secs": 0.27264800499960984,
+        "whatif_calls": 50,
+        "bytes": 14442496
+      },
+      "ilp": {
+        "config": [
+          5
+        ],
+        "whatif_cost": 852553.67,
+        "whatif_saving_%": 30.459452513227625,
+        "secs": 0.007933855999908701,
+        "ilp_predicted_saving": 373427.00000000006,
+        "bytes": 15687680
+      }
+    },
+    "25%": {
+      "budget_bytes": 40022016.0,
+      "greedy": {
+        "config": [
+          0,
+          5,
+          4,
+          10,
+          11,
+          13,
+          12
+        ],
+        "whatif_cost": 259387.81999999998,
+        "whatif_saving_%": 78.84242171615968,
+        "secs": 0.34703347200047574,
+        "whatif_calls": 62,
+        "bytes": 39944192
+      },
+      "ilp": {
+        "config": [
+          0,
+          4,
+          5,
+          10,
+          11,
+          12,
+          13
+        ],
+        "whatif_cost": 259387.81999999998,
+        "whatif_saving_%": 78.84242171615968,
+        "secs": 0.0065940229997067945,
+        "ilp_predicted_saving": 966604.3600000001,
+        "bytes": 39944192
+      }
+    },
+    "50%": {
+      "budget_bytes": 80044032.0,
+      "greedy": {
+        "config": [
+          0,
+          5,
+          4,
+          10,
+          11,
+          13,
+          3,
+          7,
+          2,
+          12,
+          1
+        ],
+        "whatif_cost": 223149.91999999998,
+        "whatif_saving_%": 81.7982513541588,
+        "secs": 0.6894234070005041,
+        "whatif_calls": 114,
+        "bytes": 71688192
+      },
+      "ilp": {
+        "config": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          9,
+          10,
+          11,
+          13
+        ],
+        "whatif_cost": 221240.93,
+        "whatif_saving_%": 81.95396261835025,
+        "secs": 0.009096903000681777,
+        "ilp_predicted_saving": 1004833.0900000001,
+        "bytes": 79806464
+      }
+    }
+  },
+  "executed": {
+    "default (PK only)": {
+      "config": [],
+      "index_bytes": 0,
+      "build_secs": 5.100000635138713e-07,
+      "weighted_ms": 3021.535255996241,
+      "latency_ms": {
+        "cust_orders": 9.599526999409136,
+        "order_lines": 0.0910400003704126,
+        "ship_week": 57.01414200029831,
+        "supp_parts": 1.0901460000241059,
+        "part_lines": 40.63503399993351,
+        "cust_segment": 1.2097150001864065,
+        "part_type": 1.5311460001612431,
+        "recent_orders": 10.678384999664559,
+        "tpch_q3": 64.72248699992633,
+        "tpch_q5": 37.808848999702604,
+        "tpch_q6": 73.73384999937116,
+        "tpch_q10": 124.40763800077548,
+        "tpch_q12": 105.87537700030225,
+        "tpch_q14": 74.87173000026814
+      },
+      "hashes": {
+        "cust_orders": "cd4b182973c0cdd11f3fda30b67c4482",
+        "order_lines": "d751713988987e9331980363e24189ce",
+        "ship_week": "05b6d078032a874ce462e0ba323f9cb5",
+        "supp_parts": "4db022d490818ef2cc44954aa2e38a07",
+        "part_lines": "3f824550f778b39e59ccfc7b372bdb12",
+        "cust_segment": "75a1ce0ce7e6b0d31d3268e7eb138dec",
+        "part_type": "000414edad663f5c9d05a8cc41e3cc3c",
+        "recent_orders": "a4beecd61882bcf611dfaf102b2d2efb",
+        "tpch_q3": "faabd544d90ceb1719ecfb0bd122611d",
+        "tpch_q5": "4a40cdbe52b1c50cd4e7d3a3d24c10bf",
+        "tpch_q6": "48696673645e5fe54dc1b6e6cb5b27e9",
+        "tpch_q10": "2229ae4f58d02e52932cd5af61e25bd9",
+        "tpch_q12": "adca0107201448f089a30bba4ba822c0",
+        "tpch_q14": "6c564843ccd6ef8d8633ddc78aae1529"
+      },
+      "results_identical_to_default": true
+    },
+    "greedy @10%": {
+      "config": [
+        "orders(o_custkey)",
+        "partsupp(ps_suppkey)",
+        "customer(c_nationkey, c_mktsegment)",
+        "part(p_type, p_size)",
+        "orders(o_orderstatus, o_orderdate)",
+        "customer(c_mktsegment)"
+      ],
+      "index_bytes": 3661824,
+      "build_secs": 0.31075610100015183,
+      "weighted_ms": 2494.2397040185824,
+      "latency_ms": {
+        "cust_orders": 0.1949420002347324,
+        "order_lines": 0.12332599999353988,
+        "ship_week": 57.331861999955436,
+        "supp_parts": 0.16598900037934072,
+        "part_lines": 42.10390800017194,
+        "cust_segment": 0.10574599946266972,
+        "part_type": 0.09928300005412893,
+        "recent_orders": 0.21555400053330231,
+        "tpch_q3": 70.86074499966344,
+        "tpch_q5": 50.99379500006762,
+        "tpch_q6": 83.96071999959531,
+        "tpch_q10": 101.17932800039853,
+        "tpch_q12": 107.36116999942169,
+        "tpch_q14": 68.80730600005336
+      },
+      "hashes": {
+        "cust_orders": "cd4b182973c0cdd11f3fda30b67c4482",
+        "order_lines": "d751713988987e9331980363e24189ce",
+        "ship_week": "05b6d078032a874ce462e0ba323f9cb5",
+        "supp_parts": "4db022d490818ef2cc44954aa2e38a07",
+        "part_lines": "3f824550f778b39e59ccfc7b372bdb12",
+        "cust_segment": "75a1ce0ce7e6b0d31d3268e7eb138dec",
+        "part_type": "000414edad663f5c9d05a8cc41e3cc3c",
+        "recent_orders": "a4beecd61882bcf611dfaf102b2d2efb",
+        "tpch_q3": "faabd544d90ceb1719ecfb0bd122611d",
+        "tpch_q5": "4a40cdbe52b1c50cd4e7d3a3d24c10bf",
+        "tpch_q6": "48696673645e5fe54dc1b6e6cb5b27e9",
+        "tpch_q10": "2229ae4f58d02e52932cd5af61e25bd9",
+        "tpch_q12": "adca0107201448f089a30bba4ba822c0",
+        "tpch_q14": "6c564843ccd6ef8d8633ddc78aae1529"
+      },
+      "results_identical_to_default": true
+    },
+    "ILP @10%": {
+      "config": [
+        "lineitem(l_partkey)"
+      ],
+      "index_bytes": 4530176,
+      "build_secs": 0.2159181590004664,
+      "weighted_ms": 2232.1480610307844,
+      "latency_ms": {
+        "cust_orders": 9.684798999842315,
+        "order_lines": 0.12495300052250968,
+        "ship_week": 57.587658000556985,
+        "supp_parts": 1.1335330000292743,
+        "part_lines": 0.13021799986745464,
+        "cust_segment": 1.1355510005159886,
+        "part_type": 2.5234929998987354,
+        "recent_orders": 10.772898999675817,
+        "tpch_q3": 70.12605799991434,
+        "tpch_q5": 43.23478400056047,
+        "tpch_q6": 77.35511000009865,
+        "tpch_q10": 106.21627000000444,
+        "tpch_q12": 107.44035200059443,
+        "tpch_q14": 69.80477199977031
+      },
+      "hashes": {
+        "cust_orders": "cd4b182973c0cdd11f3fda30b67c4482",
+        "order_lines": "d751713988987e9331980363e24189ce",
+        "ship_week": "05b6d078032a874ce462e0ba323f9cb5",
+        "supp_parts": "4db022d490818ef2cc44954aa2e38a07",
+        "part_lines": "3f824550f778b39e59ccfc7b372bdb12",
+        "cust_segment": "75a1ce0ce7e6b0d31d3268e7eb138dec",
+        "part_type": "000414edad663f5c9d05a8cc41e3cc3c",
+        "recent_orders": "a4beecd61882bcf611dfaf102b2d2efb",
+        "tpch_q3": "faabd544d90ceb1719ecfb0bd122611d",
+        "tpch_q5": "4a40cdbe52b1c50cd4e7d3a3d24c10bf",
+        "tpch_q6": "48696673645e5fe54dc1b6e6cb5b27e9",
+        "tpch_q10": "2229ae4f58d02e52932cd5af61e25bd9",
+        "tpch_q12": "adca0107201448f089a30bba4ba822c0",
+        "tpch_q14": "6c564843ccd6ef8d8633ddc78aae1529"
+      },
+      "results_identical_to_default": true
+    },
+    "greedy @25%": {
+      "config": [
+        "orders(o_custkey)",
+        "lineitem(l_partkey)",
+        "lineitem(l_shipdate)",
+        "partsupp(ps_suppkey)",
+        "customer(c_nationkey, c_mktsegment)",
+        "part(p_type, p_size)",
+        "customer(c_mktsegment)"
+      ],
+      "index_bytes": 11468800,
+      "build_secs": 0.6236149800006388,
+      "weighted_ms": 481.6830119398219,
+      "latency_ms": {
+        "cust_orders": 0.16713799959688913,
+        "order_lines": 0.09892699927149806,
+        "ship_week": 1.321580999501748,
+        "supp_parts": 0.16011200023058336,
+        "part_lines": 0.14170699978421908,
+        "cust_segment": 0.11305900079605635,
+        "part_type": 0.13797599967801943,
+        "recent_orders": 11.30085400018288,
+        "tpch_q3": 65.70397100040282,
+        "tpch_q5": 49.45993100045598,
+        "tpch_q6": 41.40964799989888,
+        "tpch_q10": 104.07891900013055,
+        "tpch_q12": 100.74843399979727,
+        "tpch_q14": 15.49623899973085
+      },
+      "hashes": {
+        "cust_orders": "cd4b182973c0cdd11f3fda30b67c4482",
+        "order_lines": "d751713988987e9331980363e24189ce",
+        "ship_week": "05b6d078032a874ce462e0ba323f9cb5",
+        "supp_parts": "4db022d490818ef2cc44954aa2e38a07",
+        "part_lines": "3f824550f778b39e59ccfc7b372bdb12",
+        "cust_segment": "75a1ce0ce7e6b0d31d3268e7eb138dec",
+        "part_type": "000414edad663f5c9d05a8cc41e3cc3c",
+        "recent_orders": "a4beecd61882bcf611dfaf102b2d2efb",
+        "tpch_q3": "faabd544d90ceb1719ecfb0bd122611d",
+        "tpch_q5": "4a40cdbe52b1c50cd4e7d3a3d24c10bf",
+        "tpch_q6": "48696673645e5fe54dc1b6e6cb5b27e9",
+        "tpch_q10": "2229ae4f58d02e52932cd5af61e25bd9",
+        "tpch_q12": "adca0107201448f089a30bba4ba822c0",
+        "tpch_q14": "6c564843ccd6ef8d8633ddc78aae1529"
+      },
+      "results_identical_to_default": true
+    },
+    "ILP @25%": {
+      "config": [
+        "orders(o_custkey)",
+        "lineitem(l_shipdate)",
+        "lineitem(l_partkey)",
+        "partsupp(ps_suppkey)",
+        "customer(c_nationkey, c_mktsegment)",
+        "customer(c_mktsegment)",
+        "part(p_type, p_size)"
+      ],
+      "index_bytes": 11468800,
+      "build_secs": 0.6432518019992131,
+      "weighted_ms": 489.2982760375162,
+      "latency_ms": {
+        "cust_orders": 0.13382700035435846,
+        "order_lines": 0.08179700034816051,
+        "ship_week": 1.4920959993105498,
+        "supp_parts": 0.27345499984221533,
+        "part_lines": 0.18394900052953744,
+        "cust_segment": 0.15771100061101606,
+        "part_type": 0.13380600012169452,
+        "recent_orders": 11.614019000262488,
+        "tpch_q3": 66.52933700024732,
+        "tpch_q5": 44.11715700007335,
+        "tpch_q6": 40.48449099991558,
+        "tpch_q10": 107.87325100045564,
+        "tpch_q12": 102.61893599999894,
+        "tpch_q14": 16.918638999413815
+      },
+      "hashes": {
+        "cust_orders": "cd4b182973c0cdd11f3fda30b67c4482",
+        "order_lines": "d751713988987e9331980363e24189ce",
+        "ship_week": "05b6d078032a874ce462e0ba323f9cb5",
+        "supp_parts": "4db022d490818ef2cc44954aa2e38a07",
+        "part_lines": "3f824550f778b39e59ccfc7b372bdb12",
+        "cust_segment": "75a1ce0ce7e6b0d31d3268e7eb138dec",
+        "part_type": "000414edad663f5c9d05a8cc41e3cc3c",
+        "recent_orders": "a4beecd61882bcf611dfaf102b2d2efb",
+        "tpch_q3": "faabd544d90ceb1719ecfb0bd122611d",
+        "tpch_q5": "4a40cdbe52b1c50cd4e7d3a3d24c10bf",
+        "tpch_q6": "48696673645e5fe54dc1b6e6cb5b27e9",
+        "tpch_q10": "2229ae4f58d02e52932cd5af61e25bd9",
+        "tpch_q12": "adca0107201448f089a30bba4ba822c0",
+        "tpch_q14": "6c564843ccd6ef8d8633ddc78aae1529"
+      },
+      "results_identical_to_default": true
+    },
+    "greedy @50%": {
+      "config": [
+        "orders(o_custkey)",
+        "lineitem(l_partkey)",
+        "lineitem(l_shipdate)",
+        "partsupp(ps_suppkey)",
+        "customer(c_nationkey, c_mktsegment)",
+        "part(p_type, p_size)",
+        "orders(o_orderstatus, o_orderdate)",
+        "lineitem(l_receiptdate)",
+        "orders(o_orderdate)",
+        "customer(c_mktsegment)",
+        "orders(o_custkey, o_orderdate)"
+      ],
+      "index_bytes": 21348352,
+      "build_secs": 1.116821295000591,
+      "weighted_ms": 353.92389001572155,
+      "latency_ms": {
+        "cust_orders": 0.16031900031521218,
+        "order_lines": 0.09075100024347194,
+        "ship_week": 1.432827999451547,
+        "supp_parts": 0.1519249999546446,
+        "part_lines": 0.13624199982587015,
+        "cust_segment": 0.10591400041448651,
+        "part_type": 0.09953399967344012,
+        "recent_orders": 0.22994200026005274,
+        "tpch_q3": 71.11660800001118,
+        "tpch_q5": 33.91706500042346,
+        "tpch_q6": 37.99586800050747,
+        "tpch_q10": 98.4557310002856,
+        "tpch_q12": 47.36585099999502,
+        "tpch_q14": 14.895176999743853
+      },
+      "hashes": {
+        "cust_orders": "cd4b182973c0cdd11f3fda30b67c4482",
+        "order_lines": "d751713988987e9331980363e24189ce",
+        "ship_week": "05b6d078032a874ce462e0ba323f9cb5",
+        "supp_parts": "4db022d490818ef2cc44954aa2e38a07",
+        "part_lines": "3f824550f778b39e59ccfc7b372bdb12",
+        "cust_segment": "75a1ce0ce7e6b0d31d3268e7eb138dec",
+        "part_type": "000414edad663f5c9d05a8cc41e3cc3c",
+        "recent_orders": "a4beecd61882bcf611dfaf102b2d2efb",
+        "tpch_q3": "faabd544d90ceb1719ecfb0bd122611d",
+        "tpch_q5": "4a40cdbe52b1c50cd4e7d3a3d24c10bf",
+        "tpch_q6": "48696673645e5fe54dc1b6e6cb5b27e9",
+        "tpch_q10": "2229ae4f58d02e52932cd5af61e25bd9",
+        "tpch_q12": "adca0107201448f089a30bba4ba822c0",
+        "tpch_q14": "6c564843ccd6ef8d8633ddc78aae1529"
+      },
+      "results_identical_to_default": true
+    },
+    "ILP @50%": {
+      "config": [
+        "orders(o_custkey)",
+        "orders(o_orderdate)",
+        "orders(o_orderstatus, o_orderdate)",
+        "lineitem(l_shipdate)",
+        "lineitem(l_partkey)",
+        "lineitem(l_shipmode, l_receiptdate)",
+        "partsupp(ps_suppkey)",
+        "customer(c_nationkey, c_mktsegment)",
+        "part(p_type, p_size)"
+      ],
+      "index_bytes": 18112512,
+      "build_secs": 1.5867670840007122,
+      "weighted_ms": 322.04881399229635,
+      "latency_ms": {
+        "cust_orders": 0.17646800006332342,
+        "order_lines": 0.09658399994805222,
+        "ship_week": 1.469515999815485,
+        "supp_parts": 0.19965999945270596,
+        "part_lines": 0.14053900031285593,
+        "cust_segment": 0.11392499982321169,
+        "part_type": 0.10118200043507386,
+        "recent_orders": 0.22144899958220776,
+        "tpch_q3": 64.93627000054403,
+        "tpch_q5": 30.704683000294608,
+        "tpch_q6": 36.453447999519994,
+        "tpch_q10": 99.50031300013507,
+        "tpch_q12": 22.331614999529847,
+        "tpch_q14": 15.017269999589189
+      },
+      "hashes": {
+        "cust_orders": "cd4b182973c0cdd11f3fda30b67c4482",
+        "order_lines": "d751713988987e9331980363e24189ce",
+        "ship_week": "05b6d078032a874ce462e0ba323f9cb5",
+        "supp_parts": "4db022d490818ef2cc44954aa2e38a07",
+        "part_lines": "3f824550f778b39e59ccfc7b372bdb12",
+        "cust_segment": "75a1ce0ce7e6b0d31d3268e7eb138dec",
+        "part_type": "000414edad663f5c9d05a8cc41e3cc3c",
+        "recent_orders": "a4beecd61882bcf611dfaf102b2d2efb",
+        "tpch_q3": "faabd544d90ceb1719ecfb0bd122611d",
+        "tpch_q5": "4a40cdbe52b1c50cd4e7d3a3d24c10bf",
+        "tpch_q6": "48696673645e5fe54dc1b6e6cb5b27e9",
+        "tpch_q10": "2229ae4f58d02e52932cd5af61e25bd9",
+        "tpch_q12": "adca0107201448f089a30bba4ba822c0",
+        "tpch_q14": "6c564843ccd6ef8d8633ddc78aae1529"
+      },
+      "results_identical_to_default": true
+    },
+    "all candidates": {
+      "config": [
+        "orders(o_custkey)",
+        "orders(o_custkey, o_orderdate)",
+        "orders(o_orderdate)",
+        "orders(o_orderstatus, o_orderdate)",
+        "lineitem(l_shipdate)",
+        "lineitem(l_partkey)",
+        "lineitem(l_suppkey)",
+        "lineitem(l_receiptdate)",
+        "lineitem(l_shipdate, l_discount, l_quantity)",
+        "lineitem(l_shipmode, l_receiptdate)",
+        "partsupp(ps_suppkey)",
+        "customer(c_nationkey, c_mktsegment)",
+        "customer(c_mktsegment)",
+        "part(p_type, p_size)",
+        "part(p_size)",
+        "supplier(s_nationkey)"
+      ],
+      "index_bytes": 49422336,
+      "build_secs": 2.9397444140004154,
+      "weighted_ms": 367.01091599661595,
+      "latency_ms": {
+        "cust_orders": 0.19824100036203163,
+        "order_lines": 0.11546199948497815,
+        "ship_week": 1.3829070003339439,
+        "supp_parts": 0.1478829999541631,
+        "part_lines": 0.12536600024759537,
+        "cust_segment": 0.10598399967420846,
+        "part_type": 0.09813699944061227,
+        "recent_orders": 0.22405100025935099,
+        "tpch_q3": 77.78970600065804,
+        "tpch_q5": 32.75386999939656,
+        "tpch_q6": 52.88587599989114,
+        "tpch_q10": 112.09867100023985,
+        "tpch_q12": 23.229221000292455,
+        "tpch_q14": 16.28383700062841
+      },
+      "hashes": {
+        "cust_orders": "cd4b182973c0cdd11f3fda30b67c4482",
+        "order_lines": "d751713988987e9331980363e24189ce",
+        "ship_week": "05b6d078032a874ce462e0ba323f9cb5",
+        "supp_parts": "4db022d490818ef2cc44954aa2e38a07",
+        "part_lines": "3f824550f778b39e59ccfc7b372bdb12",
+        "cust_segment": "75a1ce0ce7e6b0d31d3268e7eb138dec",
+        "part_type": "000414edad663f5c9d05a8cc41e3cc3c",
+        "recent_orders": "a4beecd61882bcf611dfaf102b2d2efb",
+        "tpch_q3": "faabd544d90ceb1719ecfb0bd122611d",
+        "tpch_q5": "4a40cdbe52b1c50cd4e7d3a3d24c10bf",
+        "tpch_q6": "48696673645e5fe54dc1b6e6cb5b27e9",
+        "tpch_q10": "2229ae4f58d02e52932cd5af61e25bd9",
+        "tpch_q12": "adca0107201448f089a30bba4ba822c0",
+        "tpch_q14": "6c564843ccd6ef8d8633ddc78aae1529"
+      },
+      "results_identical_to_default": true
+    }
+  },
+  "plan_examples": {
+    "default (PK only)": {
+      "cust_orders": "Sort (actual rows=22 loops=1)\n  Sort Key: o_orderdate\n  Sort Method: quicksort  Memory: 26kB\n  ->  Seq Scan on orders (actual rows=22 loops=1)\n        Filter: (o_custkey = 1234)\n        Rows Removed by Filter: 149978",
+      "tpch_q14": "Aggregate (actual rows=1 loops=1)\n  ->  Hash Join (actual rows=7630 loops=1)\n        Hash Cond: (lineitem.l_partkey = part.p_partkey)\n        ->  Seq Scan on lineitem (actual rows=7630 loops=1)\n              Filter: ((l_shipdate >= '1995-09-01'::date) AND (l_shipdate < '1995-10-01'::date))\n              Rows Removed by Filter: 592942\n        ->  Hash (actual rows=20000 loops=1)\n              Buckets: 32768  Batches: 1  Memory Usage: 1411kB\n              ->  Seq Scan on part (actual rows=20000 loops=1)"
+    },
+    "ILP @25%": {
+      "cust_orders": "Sort (actual rows=22 loops=1)\n  Sort Key: o_orderdate\n  Sort Method: quicksort  Memory: 26kB\n  ->  Bitmap Heap Scan on orders (actual rows=22 loops=1)\n        Recheck Cond: (o_custkey = 1234)\n        Heap Blocks: exact=22\n        ->  Bitmap Index Scan on a8_0 (actual rows=22 loops=1)\n              Index Cond: (o_custkey = 1234)",
+      "tpch_q14": "Aggregate (actual rows=1 loops=1)\n  ->  Hash Join (actual rows=7630 loops=1)\n        Hash Cond: (lineitem.l_partkey = part.p_partkey)\n        ->  Bitmap Heap Scan on lineitem (actual rows=7630 loops=1)\n              Recheck Cond: ((l_shipdate >= '1995-09-01'::date) AND (l_shipdate < '1995-10-01'::date))\n              Heap Blocks: exact=4200\n              ->  Bitmap Index Scan on a8_4 (actual rows=7630 loops=1)\n                    Index Cond: ((l_shipdate >= '1995-09-01'::date) AND (l_shipdate < '1995-10-01'::date))\n        ->  Hash (actual rows=20000 loops=1)\n              Buckets: 32768  Batches: 1  Memory Usage: 1411kB\n              ->  Seq Scan on part (actual rows=20000 loops=1)"
+    }
+  }
+}

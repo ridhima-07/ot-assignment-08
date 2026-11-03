@@ -18,12 +18,12 @@
         26,
         12
       ],
-      "compile_ms_opt_passes": 0.9885550002763921,
+      "compile_ms_opt_passes": 1.042079999933776,
       "native_secs_gcc_O0": [
-        1.1391368300000977,
-        1.3515049409998028
+        1.2124652920001608,
+        1.3451015609998649
       ],
-      "native_speedup": 0.8428654571972178,
+      "native_speedup": 0.9013931194153767,
       "binary_bytes": [
         15960,
         15960
@@ -67,12 +67,12 @@
         41,
         17
       ],
-      "compile_ms_opt_passes": 2.0876170001429273,
+      "compile_ms_opt_passes": 1.9939639996664482,
       "native_secs_gcc_O0": [
-        1.21663058599961,
-        0.6371103139999832
+        1.3105546449996837,
+        0.6735594940000738
       ],
-      "native_speedup": 1.909607424750688,
+      "native_speedup": 1.9457147537431045,
       "binary_bytes": [
         15960,
         15960
@@ -119,12 +119,12 @@
         41,
         23
       ],
-      "compile_ms_opt_passes": 2.2824440002295887,
+      "compile_ms_opt_passes": 1.9602229995143716,
       "native_secs_gcc_O0": [
-        0.5484760660001484,
-        0.4758225630002926
+        0.562407579000137,
+        0.4730721899995842
       ],
-      "native_speedup": 1.1526903275492868,
+      "native_speedup": 1.1888409229902763,
       "binary_bytes": [
         15960,
         15960
@@ -174,12 +174,12 @@
         53,
         37
       ],
-      "compile_ms_opt_passes": 4.332328000145935,
+      "compile_ms_opt_passes": 4.3413490002421895,
       "native_secs_gcc_O0": [
-        0.5599665610002376,
-        0.3787496429999919
+        0.5843653440006165,
+        0.37715523699989717
       ],
-      "native_speedup": 1.4784609605566004,
+      "native_speedup": 1.5494027039077698,
       "binary_bytes": [
         15960,
         15960
@@ -227,12 +227,12 @@
         38,
         15
       ],
-      "compile_ms_opt_passes": 1.771271999587043,
+      "compile_ms_opt_passes": 1.4791509993301588,
       "native_secs_gcc_O0": [
-        2.4087167580000823,
-        2.4970035129999815
+        2.4463393260002704,
+        2.616307710000001
       ],
-      "native_speedup": 0.9646429191868342,
+      "native_speedup": 0.9350350177274329,
       "binary_bytes": [
         15960,
         15960
@@ -289,14 +289,14 @@
           "spill_cost": 22.0,
           "dyn_mem_ops": 4002,
           "cycles": 34013,
-          "ms": 0.061919000017951475
+          "ms": 0.0382270000045537
         },
         "ilp": {
           "spilled": 1,
           "spill_cost": 22.0,
           "dyn_mem_ops": 4002,
           "cycles": 34013,
-          "ms": 330.84275700002763,
+          "ms": 242.87039599948912,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -306,14 +306,14 @@
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 18005,
-          "ms": 0.03856100011034869
+          "ms": 0.049219000175071415
         },
         "ilp": {
           "spilled": 0,
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 18005,
-          "ms": 7.611935999648267,
+          "ms": 7.601115999932517,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -323,14 +323,14 @@
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 18005,
-          "ms": 0.029101999643899035
+          "ms": 0.06126300013420405
         },
         "ilp": {
           "spilled": 0,
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 18005,
-          "ms": 7.321334000153001,
+          "ms": 7.082370999341947,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -340,14 +340,14 @@
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 18005,
-          "ms": 0.02892399970733095
+          "ms": 0.026974999855156057
         },
         "ilp": {
           "spilled": 0,
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 18005,
-          "ms": 7.197830999757571,
+          "ms": 6.850783000118099,
           "status": "Optimization terminated successfully. (H"
         }
       }
@@ -361,14 +361,14 @@
           "spill_cost": 63.0,
           "dyn_mem_ops": 9004,
           "cycles": 60021,
-          "ms": 0.046082999688223936
+          "ms": 0.05414199949882459
         },
         "ilp": {
           "spilled": 2,
           "spill_cost": 63.0,
           "dyn_mem_ops": 9004,
           "cycles": 60021,
-          "ms": 7.538651999766444,
+          "ms": 7.948116999614285,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -378,14 +378,14 @@
           "spill_cost": 22.0,
           "dyn_mem_ops": 3002,
           "cycles": 36013,
-          "ms": 0.05066899984740303
+          "ms": 0.05675100055668736
         },
         "ilp": {
           "spilled": 1,
           "spill_cost": 22.0,
           "dyn_mem_ops": 3002,
           "cycles": 36013,
-          "ms": 7.589788000132103,
+          "ms": 7.659729999431875,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -395,14 +395,14 @@
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 24005,
-          "ms": 0.04716100011137314
+          "ms": 0.06713799939461751
         },
         "ilp": {
           "spilled": 0,
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 24005,
-          "ms": 7.655577000150515,
+          "ms": 7.674186000258487,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -412,14 +412,14 @@
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 24005,
-          "ms": 0.0483079998048197
+          "ms": 0.04942599935020553
         },
         "ilp": {
           "spilled": 0,
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 24005,
-          "ms": 7.769978999931482,
+          "ms": 7.81851900046604,
           "status": "Optimization terminated successfully. (H"
         }
       }
@@ -433,14 +433,14 @@
           "spill_cost": 373.0,
           "dyn_mem_ops": 13487,
           "cycles": 203129,
-          "ms": 0.04854100006923545
+          "ms": 0.046763999307586346
         },
         "ilp": {
           "spilled": 3,
           "spill_cost": 373.0,
           "dyn_mem_ops": 13487,
           "cycles": 203129,
-          "ms": 7.645531999969535,
+          "ms": 7.953299000291736,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -450,14 +450,14 @@
           "spill_cost": 142.0,
           "dyn_mem_ops": 2431,
           "cycles": 158905,
-          "ms": 0.06078300020817551
+          "ms": 0.08043399975576904
         },
         "ilp": {
           "spilled": 2,
           "spill_cost": 142.0,
           "dyn_mem_ops": 2431,
           "cycles": 158905,
-          "ms": 7.803011999840237,
+          "ms": 8.353281999916362,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -467,14 +467,14 @@
           "spill_cost": 22.0,
           "dyn_mem_ops": 798,
           "cycles": 152373,
-          "ms": 0.061935999838169664
+          "ms": 0.05778900049335789
         },
         "ilp": {
           "spilled": 1,
           "spill_cost": 22.0,
           "dyn_mem_ops": 798,
           "cycles": 152373,
-          "ms": 8.07167999982994,
+          "ms": 7.892113999332651,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -484,14 +484,14 @@
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 149181,
-          "ms": 0.05896800030313898
+          "ms": 0.05690200032404391
         },
         "ilp": {
           "spilled": 0,
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 149181,
-          "ms": 8.546142999875883,
+          "ms": 8.32921500023076,
           "status": "Optimization terminated successfully. (H"
         }
       }
@@ -505,14 +505,14 @@
           "spill_cost": 6963.0,
           "dyn_mem_ops": 50604,
           "cycles": 663101,
-          "ms": 0.13922199968874338
+          "ms": 0.11452600028860616
         },
         "ilp": {
           "spilled": 6,
           "spill_cost": 6963.0,
           "dyn_mem_ops": 50604,
           "cycles": 663101,
-          "ms": 9.016850000080012,
+          "ms": 9.3603940003959,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -522,14 +522,14 @@
           "spill_cost": 4763.0,
           "dyn_mem_ops": 34184,
           "cycles": 597421,
-          "ms": 0.33677400006126845
+          "ms": 0.32909899982769275
         },
         "ilp": {
           "spilled": 5,
           "spill_cost": 4763.0,
           "dyn_mem_ops": 34184,
           "cycles": 597421,
-          "ms": 11.89826500012714,
+          "ms": 10.710995999943407,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -539,14 +539,14 @@
           "spill_cost": 2763.0,
           "dyn_mem_ops": 18184,
           "cycles": 533421,
-          "ms": 0.32097299981614924
+          "ms": 0.35694800044439035
         },
         "ilp": {
           "spilled": 4,
           "spill_cost": 2763.0,
           "dyn_mem_ops": 18184,
           "cycles": 533421,
-          "ms": 11.775453000154812,
+          "ms": 16.715122000277916,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -556,14 +556,14 @@
           "spill_cost": 343.0,
           "dyn_mem_ops": 524,
           "cycles": 462781,
-          "ms": 0.23986299993339344
+          "ms": 2.2793250000177068
         },
         "ilp": {
           "spilled": 2,
           "spill_cost": 343.0,
           "dyn_mem_ops": 524,
           "cycles": 462781,
-          "ms": 27.244151000104466,
+          "ms": 43.70035299962183,
           "status": "Optimization terminated successfully. (H"
         }
       }
@@ -577,14 +577,14 @@
           "spill_cost": 53.0,
           "dyn_mem_ops": 15003,
           "cycles": 144039,
-          "ms": 0.03622700023697689
+          "ms": 0.0593230006415979
         },
         "ilp": {
           "spilled": 2,
           "spill_cost": 53.0,
-          "dyn_mem_ops": 15004,
-          "cycles": 144043,
-          "ms": 8.037008999963291,
+          "dyn_mem_ops": 15003,
+          "cycles": 144039,
+          "ms": 9.134397999332577,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -594,14 +594,14 @@
           "spill_cost": 22.0,
           "dyn_mem_ops": 6002,
           "cycles": 108035,
-          "ms": 0.04579300002660602
+          "ms": 0.04453699966688873
         },
         "ilp": {
           "spilled": 1,
           "spill_cost": 22.0,
           "dyn_mem_ops": 6002,
           "cycles": 108035,
-          "ms": 7.827220999843121,
+          "ms": 7.992533999640727,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -611,14 +611,14 @@
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 84027,
-          "ms": 0.037836000046809204
+          "ms": 0.036983000427426305
         },
         "ilp": {
           "spilled": 0,
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 84027,
-          "ms": 7.667892999961623,
+          "ms": 8.377074000236462,
           "status": "Optimization terminated successfully. (H"
         }
       },
@@ -628,17 +628,43 @@
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 84027,
-          "ms": 0.05873000009160023
+          "ms": 0.04083800013177097
         },
         "ilp": {
           "spilled": 0,
           "spill_cost": 0,
           "dyn_mem_ops": 0,
           "cycles": 84027,
-          "ms": 7.353505000082805,
+          "ms": 8.586807000028784,
           "status": "Optimization terminated successfully. (H"
         }
       }
+    }
+  },
+  "F4b_regalloc_random_graphs": {
+    "n=30,p=0.2,K=3": {
+      "chaitin_excess_spill_cost_%_mean": 183.77135907570693,
+      "max_%": 650.0,
+      "instances_where_chaitin_suboptimal": 10,
+      "chaitin_ms": 0.18739469996944536,
+      "ilp_ms": 594.3624967998403,
+      "ilp_proved_optimal": 10
+    },
+    "n=30,p=0.3,K=4": {
+      "chaitin_excess_spill_cost_%_mean": 375.3636363636364,
+      "max_%": 1200.0,
+      "instances_where_chaitin_suboptimal": 10,
+      "chaitin_ms": 0.21972640006424626,
+      "ilp_ms": 1881.025233100081,
+      "ilp_proved_optimal": 10
+    },
+    "n=30,p=0.4,K=5": {
+      "chaitin_excess_spill_cost_%_mean": 495.7692307692308,
+      "max_%": 2200.0,
+      "instances_where_chaitin_suboptimal": 10,
+      "chaitin_ms": 0.2299715998560714,
+      "ilp_ms": 4107.860169800097,
+      "ilp_proved_optimal": 10
     }
   },
   "F3_pass_ordering": {
@@ -652,7 +678,7 @@
         "licm"
       ],
       "cycles": 753981,
-      "secs": 7.312057525,
+      "secs": 8.406313039999986,
       "evaluations": 1296
     },
     "greedy": {
@@ -663,7 +689,7 @@
         "licm"
       ],
       "cycles": 777888,
-      "secs": 0.05664501100000052,
+      "secs": 0.055741961000421725,
       "evaluations": 24
     },
     "default_order_first4": {
@@ -684,31 +710,5 @@
     "pipelines_per_program": 3,
     "mismatches": 0,
     "examples": []
-  },
-  "F4b_regalloc_random_graphs": {
-    "n=30,p=0.2,K=3": {
-      "chaitin_excess_spill_cost_%_mean": 183.77135907570693,
-      "max_%": 650.0,
-      "instances_where_chaitin_suboptimal": 10,
-      "chaitin_ms": 0.17981339997277246,
-      "ilp_ms": 637.6619270000447,
-      "ilp_proved_optimal": 10
-    },
-    "n=30,p=0.3,K=4": {
-      "chaitin_excess_spill_cost_%_mean": 375.3636363636364,
-      "max_%": 1200.0,
-      "instances_where_chaitin_suboptimal": 10,
-      "chaitin_ms": 0.22452830003203417,
-      "ilp_ms": 1855.4263324000203,
-      "ilp_proved_optimal": 10
-    },
-    "n=30,p=0.4,K=5": {
-      "chaitin_excess_spill_cost_%_mean": 495.7692307692308,
-      "max_%": 2200.0,
-      "instances_where_chaitin_suboptimal": 10,
-      "chaitin_ms": 0.26805500010596006,
-      "ilp_ms": 4510.1430171000175,
-      "ilp_proved_optimal": 10
-    }
   }
 }

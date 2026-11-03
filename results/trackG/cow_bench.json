@@ -1,0 +1,531 @@
+{
+  "summary": {
+    "isolation_test": {
+      "0": [
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "1": [
+        "PASS",
+        "PASS",
+        "PASS"
+      ]
+    },
+    "fork_exit_2MB_heap": {
+      "eager copy (original)": {
+        "avg_us": [
+          17915.333333333332,
+          1428.5504307980636
+        ],
+        "pages_copied_per_20_forks": [
+          10340.0,
+          0.0
+        ]
+      },
+      "copy-on-write": {
+        "avg_us": [
+          1116.3333333333333,
+          18.475208614068027
+        ],
+        "pages_copied_per_20_forks": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "child_writes_fraction": {
+      "0%": {
+        "eager": {
+          "avg_us": [
+            16393.0,
+            334.7581216341136
+          ],
+          "pages_copied_per_5_forks": [
+            2585.0,
+            0.0
+          ]
+        },
+        "COW": {
+          "avg_us": [
+            1207.0,
+            82.52878285786117
+          ],
+          "pages_copied_per_5_forks": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "25%": {
+        "eager": {
+          "avg_us": [
+            16217.666666666666,
+            21.07921567168317
+          ],
+          "pages_copied_per_5_forks": [
+            2585.0,
+            0.0
+          ]
+        },
+        "COW": {
+          "avg_us": [
+            9541.666666666666,
+            1199.9043017396568
+          ],
+          "pages_copied_per_5_forks": [
+            640.0,
+            0.0
+          ]
+        }
+      },
+      "50%": {
+        "eager": {
+          "avg_us": [
+            17883.333333333332,
+            2437.86901480234
+          ],
+          "pages_copied_per_5_forks": [
+            2585.0,
+            0.0
+          ]
+        },
+        "COW": {
+          "avg_us": [
+            16383.666666666666,
+            571.9233631644482
+          ],
+          "pages_copied_per_5_forks": [
+            1280.0,
+            0.0
+          ]
+        }
+      },
+      "100%": {
+        "eager": {
+          "avg_us": [
+            19410.666666666668,
+            4960.48831601621
+          ],
+          "pages_copied_per_5_forks": [
+            2585.0,
+            0.0
+          ]
+        },
+        "COW": {
+          "avg_us": [
+            36948.0,
+            7227.811494498179
+          ],
+          "pages_copied_per_5_forks": [
+            2560.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "memory_8_children_pages": {
+      "eager": [
+        4192.0,
+        0.0
+      ],
+      "COW": [
+        57.0,
+        0.0
+      ]
+    },
+    "reps": 3
+  },
+  "raw": [
+    {
+      "test": "4",
+      "cow": "0",
+      "child_status": "0",
+      "copyout_child_status": "0",
+      "parent_corrupted_pages": "0",
+      "parent_first_byte": "1",
+      "RESULT": "PASS",
+      "rep": 0
+    },
+    {
+      "test": "4",
+      "cow": "1",
+      "child_status": "0",
+      "copyout_child_status": "0",
+      "parent_corrupted_pages": "0",
+      "parent_first_byte": "1",
+      "RESULT": "PASS",
+      "rep": 0
+    },
+    {
+      "test": "1",
+      "cow": "0",
+      "iters": "20",
+      "avg_us": "18665",
+      "pages_copied": "10340",
+      "pages_shared": "0",
+      "cow_faults": "0",
+      "rep": 0
+    },
+    {
+      "test": "1",
+      "cow": "1",
+      "iters": "20",
+      "avg_us": "1127",
+      "pages_copied": "0",
+      "pages_shared": "10340",
+      "cow_faults": "1",
+      "rep": 0
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "0",
+      "avg_us": "16419",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 0
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "25",
+      "avg_us": "16241",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 0
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "50",
+      "avg_us": "16438",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 0
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "100",
+      "avg_us": "16374",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 0
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "0",
+      "avg_us": "1166",
+      "pages_copied": "0",
+      "cow_faults": "1",
+      "rep": 0
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "25",
+      "avg_us": "9454",
+      "pages_copied": "640",
+      "cow_faults": "641",
+      "rep": 0
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "50",
+      "avg_us": "16536",
+      "pages_copied": "1280",
+      "cow_faults": "1281",
+      "rep": 0
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "100",
+      "avg_us": "31118",
+      "pages_copied": "2560",
+      "cow_faults": "2561",
+      "rep": 0
+    },
+    {
+      "test": "3",
+      "cow": "0",
+      "children": "8",
+      "pages_used_by_children": "4192",
+      "free_before": "31985",
+      "free_after": "27793",
+      "rep": 0
+    },
+    {
+      "test": "3",
+      "cow": "1",
+      "children": "8",
+      "pages_used_by_children": "57",
+      "free_before": "31985",
+      "free_after": "31928",
+      "rep": 0
+    },
+    {
+      "test": "4",
+      "cow": "0",
+      "child_status": "0",
+      "copyout_child_status": "0",
+      "parent_corrupted_pages": "0",
+      "parent_first_byte": "1",
+      "RESULT": "PASS",
+      "rep": 1
+    },
+    {
+      "test": "4",
+      "cow": "1",
+      "child_status": "0",
+      "copyout_child_status": "0",
+      "parent_corrupted_pages": "0",
+      "parent_first_byte": "1",
+      "RESULT": "PASS",
+      "rep": 1
+    },
+    {
+      "test": "1",
+      "cow": "0",
+      "iters": "20",
+      "avg_us": "16268",
+      "pages_copied": "10340",
+      "pages_shared": "0",
+      "cow_faults": "0",
+      "rep": 1
+    },
+    {
+      "test": "1",
+      "cow": "1",
+      "iters": "20",
+      "avg_us": "1095",
+      "pages_copied": "0",
+      "pages_shared": "10340",
+      "cow_faults": "1",
+      "rep": 1
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "0",
+      "avg_us": "16046",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 1
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "25",
+      "avg_us": "16212",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 1
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "50",
+      "avg_us": "20698",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 1
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "100",
+      "avg_us": "25135",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 1
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "0",
+      "avg_us": "1153",
+      "pages_copied": "0",
+      "cow_faults": "1",
+      "rep": 1
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "25",
+      "avg_us": "8388",
+      "pages_copied": "640",
+      "cow_faults": "641",
+      "rep": 1
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "50",
+      "avg_us": "15751",
+      "pages_copied": "1280",
+      "cow_faults": "1281",
+      "rep": 1
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "100",
+      "avg_us": "45035",
+      "pages_copied": "2560",
+      "cow_faults": "2561",
+      "rep": 1
+    },
+    {
+      "test": "3",
+      "cow": "0",
+      "children": "8",
+      "pages_used_by_children": "4192",
+      "free_before": "31985",
+      "free_after": "27793",
+      "rep": 1
+    },
+    {
+      "test": "3",
+      "cow": "1",
+      "children": "8",
+      "pages_used_by_children": "57",
+      "free_before": "31985",
+      "free_after": "31928",
+      "rep": 1
+    },
+    {
+      "test": "4",
+      "cow": "0",
+      "child_status": "0",
+      "copyout_child_status": "0",
+      "parent_corrupted_pages": "0",
+      "parent_first_byte": "1",
+      "RESULT": "PASS",
+      "rep": 2
+    },
+    {
+      "test": "4",
+      "cow": "1",
+      "child_status": "0",
+      "copyout_child_status": "0",
+      "parent_corrupted_pages": "0",
+      "parent_first_byte": "1",
+      "RESULT": "PASS",
+      "rep": 2
+    },
+    {
+      "test": "1",
+      "cow": "0",
+      "iters": "20",
+      "avg_us": "18813",
+      "pages_copied": "10340",
+      "pages_shared": "0",
+      "cow_faults": "0",
+      "rep": 2
+    },
+    {
+      "test": "1",
+      "cow": "1",
+      "iters": "20",
+      "avg_us": "1127",
+      "pages_copied": "0",
+      "pages_shared": "10340",
+      "cow_faults": "1",
+      "rep": 2
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "0",
+      "avg_us": "16714",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 2
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "25",
+      "avg_us": "16200",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 2
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "50",
+      "avg_us": "16514",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 2
+    },
+    {
+      "test": "2",
+      "cow": "0",
+      "write_pct": "100",
+      "avg_us": "16723",
+      "pages_copied": "2585",
+      "cow_faults": "0",
+      "rep": 2
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "0",
+      "avg_us": "1302",
+      "pages_copied": "0",
+      "cow_faults": "1",
+      "rep": 2
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "25",
+      "avg_us": "10783",
+      "pages_copied": "640",
+      "cow_faults": "641",
+      "rep": 2
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "50",
+      "avg_us": "16864",
+      "pages_copied": "1280",
+      "cow_faults": "1281",
+      "rep": 2
+    },
+    {
+      "test": "2",
+      "cow": "1",
+      "write_pct": "100",
+      "avg_us": "34691",
+      "pages_copied": "2560",
+      "cow_faults": "2561",
+      "rep": 2
+    },
+    {
+      "test": "3",
+      "cow": "0",
+      "children": "8",
+      "pages_used_by_children": "4192",
+      "free_before": "31985",
+      "free_after": "27793",
+      "rep": 2
+    },
+    {
+      "test": "3",
+      "cow": "1",
+      "children": "8",
+      "pages_used_by_children": "57",
+      "free_before": "31985",
+      "free_after": "31928",
+      "rep": 2
+    }
+  ]
+}

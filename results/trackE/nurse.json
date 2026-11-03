@@ -14,7 +14,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 0.0005812070000047242
+        "secs": 0.0007403177998639876
       },
       "Greedy": {
         "cost": 714.0,
@@ -29,7 +29,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 0.0033476002000043083
+        "secs": 0.00430471520012361
       },
       "Simulated annealing": {
         "cost": 291.2,
@@ -44,7 +44,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 1.4209411240000462
+        "secs": 1.4930501372000435
       },
       "ILP (HiGHS)": {
         "cost": 146.8,
@@ -59,7 +59,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 0.7657702038000025,
+        "secs": 0.8816232207998838,
         "proved_optimal_runs": 5,
         "model_size": "548 vars, 622 constraints",
         "mean_gap": 0.0
@@ -79,7 +79,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 0.0011549886000466359
+        "secs": 0.0017179526001200429
       },
       "Greedy": {
         "cost": 448.0,
@@ -94,7 +94,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 0.011389168599998811
+        "secs": 0.01359829199991509
       },
       "Simulated annealing": {
         "cost": 185.8,
@@ -109,7 +109,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 1.6650867280000512
+        "secs": 1.9091078250001374
       },
       "ILP (HiGHS)": {
         "cost": 37.0,
@@ -124,7 +124,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 1.6562092405999465,
+        "secs": 1.699069793000308,
         "proved_optimal_runs": 5,
         "model_size": "968 vars, 1162 constraints",
         "mean_gap": 0.0
@@ -144,7 +144,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 0.002988463999963642
+        "secs": 0.0028210508000483967
       },
       "Greedy": {
         "cost": 911.0,
@@ -159,7 +159,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 0.056988866799929386
+        "secs": 0.05771475279998413
       },
       "Simulated annealing": {
         "cost": 413.0,
@@ -174,7 +174,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 1.8579020569999556
+        "secs": 2.1355491037998946
       },
       "ILP (HiGHS)": {
         "cost": 8.0,
@@ -189,7 +189,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 3.489942504600049,
+        "secs": 3.5930777768000555,
         "proved_optimal_runs": 5,
         "model_size": "1808 vars, 2232 constraints",
         "mean_gap": 0.0
@@ -209,7 +209,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 0.004871055000012348
+        "secs": 0.004770711999844935
       },
       "Greedy": {
         "cost": 1944.0,
@@ -224,7 +224,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 0.1882758267999634
+        "secs": 0.2140871387999141
       },
       "Simulated annealing": {
         "cost": 1205.4,
@@ -239,7 +239,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 2.274604750799972
+        "secs": 2.5212292336000246
       },
       "ILP (HiGHS)": {
         "cost": 52.0,
@@ -254,7 +254,7 @@
         "H3_over_contract": 0.0,
         "H4_4plus_nights": 0.0,
         "H5_leave_worked": 0.0,
-        "secs": 9.303181671399988,
+        "secs": 10.097870941599831,
         "proved_optimal_runs": 5,
         "model_size": "3488 vars, 4374 constraints",
         "mean_gap": 0.0

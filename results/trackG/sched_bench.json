@@ -6,58 +6,58 @@
     "W1 mixed batch (6 CPU jobs arrive together)": {
       "RR (original)": {
         "avg_turnaround": [
-          11.0,
-          0.8819171036881968
-        ],
-        "avg_response": [
-          2.2777777777777777,
-          0.19245008972987535
-        ],
-        "makespan": [
-          18.0,
-          1.0
-        ],
-        "long_turnaround": [
-          15.555555555555555,
-          0.5091750772173155
-        ],
-        "long_response": [
-          1.777777777777778,
-          0.1924500897298752
-        ],
-        "short_turnaround": [
-          6.4444444444444455,
-          1.3471506281091266
-        ],
-        "short_response": [
-          2.7777777777777772,
-          0.19245008972987535
-        ]
-      },
-      "MLFQ": {
-        "avg_turnaround": [
-          11.777777777777779,
-          0.09622504486493831
+          11.333333333333334,
+          0.666666666666667
         ],
         "avg_response": [
           2.1666666666666665,
           0.0
         ],
         "makespan": [
-          17.666666666666668,
-          0.5773502691896258
+          19.666666666666668,
+          1.1547005383792515
         ],
         "long_turnaround": [
-          16.555555555555557,
-          0.19245008972987662
+          16.555555555555554,
+          0.7698003589195014
         ],
         "long_response": [
           1.6666666666666667,
           0.0
         ],
         "short_turnaround": [
-          7.0,
+          6.111111111111112,
+          0.7698003589195008
+        ],
+        "short_response": [
+          2.6666666666666665,
           0.0
+        ]
+      },
+      "MLFQ": {
+        "avg_turnaround": [
+          12.555555555555557,
+          0.6309898162000303
+        ],
+        "avg_response": [
+          2.1666666666666665,
+          0.0
+        ],
+        "makespan": [
+          20.0,
+          1.7320508075688772
+        ],
+        "long_turnaround": [
+          18.0,
+          1.1547005383792515
+        ],
+        "long_response": [
+          1.6666666666666667,
+          0.0
+        ],
+        "short_turnaround": [
+          7.111111111111111,
+          0.1924500897298751
         ],
         "short_response": [
           2.6666666666666665,
@@ -68,20 +68,20 @@
     "W2 2 CPU hogs + 3 interactive": {
       "RR (original)": {
         "avg_turnaround": [
-          26.533333333333335,
-          0.7023769168568486
+          27.666666666666668,
+          0.5033222956847165
         ],
         "avg_response": [
           1.3999999999999997,
           2.7194799110210365e-16
         ],
         "makespan": [
-          33.666666666666664,
+          36.333333333333336,
           1.5275252316519465
         ],
         "hog_turnaround": [
-          33.333333333333336,
-          1.755942292142123
+          36.166666666666664,
+          1.2583057392117918
         ],
         "hog_response": [
           0.5,
@@ -98,28 +98,28 @@
       },
       "MLFQ": {
         "avg_turnaround": [
-          33.333333333333336,
-          0.46188021535170304
+          22.46666666666667,
+          1.6772994167212159
         ],
         "avg_response": [
           1.3999999999999997,
           2.7194799110210365e-16
         ],
         "makespan": [
-          34.333333333333336,
-          1.5275252316519465
+          37.666666666666664,
+          3.7859388972001824
         ],
         "hog_turnaround": [
-          33.333333333333336,
-          1.0408329997330665
+          36.666666666666664,
+          4.193248541803042
         ],
         "hog_response": [
           0.5,
           0.0
         ],
         "interactive_turnaround": [
-          33.333333333333336,
-          0.5773502691896258
+          13.0,
+          0.0
         ],
         "interactive_response": [
           2.0,
@@ -130,58 +130,58 @@
     "W3 short jobs arriving behind 2 long jobs": {
       "RR (original)": {
         "avg_turnaround": [
-          7.625,
-          0.0
+          8.416666666666666,
+          0.5051814855409226
         ],
         "avg_response": [
-          1.5416666666666667,
+          1.5833333333333333,
           0.07216878364870322
         ],
         "makespan": [
-          26.666666666666668,
-          0.5773502691896258
+          30.0,
+          2.0
         ],
         "long_turnaround": [
-          24.833333333333332,
-          0.2886751345948129
+          27.5,
+          2.0
         ],
         "long_response": [
           0.5,
           0.0
         ],
         "short_turnaround": [
-          1.8888888888888886,
-          0.09622504486493767
+          2.0555555555555554,
+          0.09622504486493755
         ],
         "short_response": [
-          1.8888888888888886,
+          1.9444444444444444,
           0.09622504486493767
         ]
       },
       "MLFQ": {
         "avg_turnaround": [
-          6.25,
-          0.125
+          6.833333333333333,
+          0.2602082499332666
         ],
         "avg_response": [
           0.125,
           0.0
         ],
         "makespan": [
-          25.666666666666668,
+          28.333333333333332,
           0.5773502691896258
         ],
         "long_turnaround": [
-          24.5,
-          1.3228756555322954
+          27.166666666666668,
+          0.7637626158259733
         ],
         "long_response": [
           0.5,
           0.0
         ],
         "short_turnaround": [
-          0.16666666666666666,
-          0.2886751345948129
+          0.05555555555555555,
+          0.09622504486493763
         ],
         "short_response": [
           0.0,
@@ -286,19 +286,19 @@
       "w": 1,
       "pol": 1,
       "kind": "long",
-      "turnaround": 15,
+      "turnaround": 16,
       "response": 2,
-      "etime": 15,
-      "rtime": 3
+      "etime": 16,
+      "rtime": 4
     },
     {
       "rep": 0,
       "w": 1,
       "pol": 1,
       "kind": "long",
-      "turnaround": 17,
+      "turnaround": 19,
       "response": 3,
-      "etime": 17,
+      "etime": 19,
       "rtime": 5
     },
     {
@@ -306,9 +306,9 @@
       "w": 1,
       "pol": 1,
       "kind": "long",
-      "turnaround": 18,
+      "turnaround": 21,
       "response": 0,
-      "etime": 18,
+      "etime": 21,
       "rtime": 8
     },
     {
@@ -346,20 +346,50 @@
       "w": 2,
       "pol": 0,
       "kind": "hog",
-      "turnaround": 31,
+      "turnaround": 35,
       "response": 1,
-      "etime": 31,
-      "rtime": 15
+      "etime": 35,
+      "rtime": 17
     },
     {
       "rep": 0,
       "w": 2,
       "pol": 0,
       "kind": "hog",
-      "turnaround": 32,
+      "turnaround": 35,
       "response": 0,
-      "etime": 32,
-      "rtime": 16
+      "etime": 35,
+      "rtime": 18
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 13,
+      "response": 2,
+      "etime": 13,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 13,
+      "response": 2,
+      "etime": 13,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 13,
+      "response": 2,
+      "etime": 13,
+      "rtime": 0
     },
     {
       "rep": 0,
@@ -367,7 +397,7 @@
       "pol": 1,
       "kind": "hog",
       "turnaround": 33,
-      "response": 1,
+      "response": 0,
       "etime": 33,
       "rtime": 17
     },
@@ -375,51 +405,11 @@
       "rep": 0,
       "w": 2,
       "pol": 1,
-      "kind": "interactive",
-      "turnaround": 33,
-      "response": 2,
-      "etime": 33,
-      "rtime": 0
-    },
-    {
-      "rep": 0,
-      "w": 2,
-      "pol": 1,
-      "kind": "interactive",
-      "turnaround": 33,
-      "response": 2,
-      "etime": 33,
-      "rtime": 0
-    },
-    {
-      "rep": 0,
-      "w": 2,
-      "pol": 1,
-      "kind": "interactive",
-      "turnaround": 33,
-      "response": 2,
-      "etime": 33,
-      "rtime": 0
-    },
-    {
-      "rep": 0,
-      "w": 2,
-      "pol": 1,
       "kind": "hog",
-      "turnaround": 36,
-      "response": 0,
-      "etime": 36,
-      "rtime": 18
-    },
-    {
-      "rep": 0,
-      "w": 3,
-      "pol": 0,
-      "kind": "long",
-      "turnaround": 23,
+      "turnaround": 35,
       "response": 1,
-      "etime": 23,
-      "rtime": 11
+      "etime": 35,
+      "rtime": 18
     },
     {
       "rep": 0,
@@ -475,21 +465,31 @@
       "rep": 0,
       "w": 3,
       "pol": 0,
-      "kind": "short",
-      "turnaround": 2,
-      "response": 2,
+      "kind": "long",
+      "turnaround": 25,
+      "response": 1,
       "etime": 25,
-      "rtime": 0
+      "rtime": 12
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 3,
+      "response": 1,
+      "etime": 27,
+      "rtime": 1
     },
     {
       "rep": 0,
       "w": 3,
       "pol": 0,
       "kind": "long",
-      "turnaround": 26,
+      "turnaround": 30,
       "response": 0,
-      "etime": 26,
-      "rtime": 14
+      "etime": 30,
+      "rtime": 17
     },
     {
       "rep": 0,
@@ -508,7 +508,7 @@
       "kind": "short",
       "turnaround": 0,
       "response": 0,
-      "etime": 8,
+      "etime": 7,
       "rtime": 0
     },
     {
@@ -518,7 +518,17 @@
       "kind": "short",
       "turnaround": 0,
       "response": 0,
-      "etime": 12,
+      "etime": 10,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 13,
       "rtime": 0
     },
     {
@@ -538,17 +548,7 @@
       "kind": "short",
       "turnaround": 0,
       "response": 0,
-      "etime": 20,
-      "rtime": 0
-    },
-    {
-      "rep": 0,
-      "w": 3,
-      "pol": 1,
-      "kind": "short",
-      "turnaround": 0,
-      "response": 0,
-      "etime": 24,
+      "etime": 19,
       "rtime": 0
     },
     {
@@ -566,10 +566,10 @@
       "w": 3,
       "pol": 1,
       "kind": "long",
-      "turnaround": 25,
+      "turnaround": 28,
       "response": 0,
-      "etime": 25,
-      "rtime": 12
+      "etime": 28,
+      "rtime": 15
     },
     {
       "rep": 1,
@@ -596,19 +596,19 @@
       "w": 1,
       "pol": 0,
       "kind": "short",
-      "turnaround": 8,
+      "turnaround": 12,
       "response": 4,
-      "etime": 8,
-      "rtime": 1
+      "etime": 12,
+      "rtime": 2
     },
     {
       "rep": 1,
       "w": 1,
       "pol": 0,
       "kind": "long",
-      "turnaround": 12,
+      "turnaround": 13,
       "response": 2,
-      "etime": 12,
+      "etime": 13,
       "rtime": 3
     },
     {
@@ -616,19 +616,19 @@
       "w": 1,
       "pol": 0,
       "kind": "long",
-      "turnaround": 16,
+      "turnaround": 19,
       "response": 3,
-      "etime": 16,
-      "rtime": 5
+      "etime": 19,
+      "rtime": 6
     },
     {
       "rep": 1,
       "w": 1,
       "pol": 0,
       "kind": "long",
-      "turnaround": 17,
+      "turnaround": 19,
       "response": 0,
-      "etime": 17,
+      "etime": 19,
       "rtime": 7
     },
     {
@@ -656,19 +656,19 @@
       "w": 1,
       "pol": 1,
       "kind": "short",
-      "turnaround": 11,
+      "turnaround": 12,
       "response": 4,
-      "etime": 11,
-      "rtime": 1
+      "etime": 12,
+      "rtime": 2
     },
     {
       "rep": 1,
       "w": 1,
       "pol": 1,
       "kind": "long",
-      "turnaround": 15,
+      "turnaround": 16,
       "response": 2,
-      "etime": 15,
+      "etime": 16,
       "rtime": 3
     },
     {
@@ -676,20 +676,20 @@
       "w": 1,
       "pol": 1,
       "kind": "long",
-      "turnaround": 17,
+      "turnaround": 19,
       "response": 3,
-      "etime": 17,
-      "rtime": 5
+      "etime": 19,
+      "rtime": 6
     },
     {
       "rep": 1,
       "w": 1,
       "pol": 1,
       "kind": "long",
-      "turnaround": 17,
+      "turnaround": 21,
       "response": 0,
-      "etime": 17,
-      "rtime": 7
+      "etime": 21,
+      "rtime": 9
     },
     {
       "rep": 1,
@@ -725,71 +725,71 @@
       "rep": 1,
       "w": 2,
       "pol": 0,
+      "kind": "hog",
+      "turnaround": 36,
+      "response": 0,
+      "etime": 36,
+      "rtime": 18
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 0,
+      "kind": "hog",
+      "turnaround": 36,
+      "response": 1,
+      "etime": 36,
+      "rtime": 18
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 13,
+      "response": 2,
+      "etime": 13,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 13,
+      "response": 2,
+      "etime": 13,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 13,
+      "response": 2,
+      "etime": 13,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 1,
       "kind": "hog",
       "turnaround": 33,
-      "response": 1,
+      "response": 0,
       "etime": 33,
-      "rtime": 16
-    },
-    {
-      "rep": 1,
-      "w": 2,
-      "pol": 0,
-      "kind": "hog",
-      "turnaround": 34,
-      "response": 0,
-      "etime": 34,
-      "rtime": 18
+      "rtime": 17
     },
     {
       "rep": 1,
       "w": 2,
       "pol": 1,
       "kind": "hog",
-      "turnaround": 32,
+      "turnaround": 36,
       "response": 1,
-      "etime": 32,
-      "rtime": 16
-    },
-    {
-      "rep": 1,
-      "w": 2,
-      "pol": 1,
-      "kind": "hog",
-      "turnaround": 34,
-      "response": 0,
-      "etime": 34,
-      "rtime": 18
-    },
-    {
-      "rep": 1,
-      "w": 2,
-      "pol": 1,
-      "kind": "interactive",
-      "turnaround": 34,
-      "response": 2,
-      "etime": 34,
-      "rtime": 0
-    },
-    {
-      "rep": 1,
-      "w": 2,
-      "pol": 1,
-      "kind": "interactive",
-      "turnaround": 34,
-      "response": 2,
-      "etime": 34,
-      "rtime": 0
-    },
-    {
-      "rep": 1,
-      "w": 2,
-      "pol": 1,
-      "kind": "interactive",
-      "turnaround": 34,
-      "response": 2,
-      "etime": 34,
-      "rtime": 0
+      "etime": 36,
+      "rtime": 19
     },
     {
       "rep": 1,
@@ -856,9 +856,9 @@
       "w": 3,
       "pol": 0,
       "kind": "short",
-      "turnaround": 1,
-      "response": 1,
-      "etime": 24,
+      "turnaround": 2,
+      "response": 2,
+      "etime": 25,
       "rtime": 0
     },
     {
@@ -866,9 +866,9 @@
       "w": 3,
       "pol": 0,
       "kind": "long",
-      "turnaround": 27,
+      "turnaround": 28,
       "response": 0,
-      "etime": 27,
+      "etime": 28,
       "rtime": 16
     },
     {
@@ -888,7 +888,7 @@
       "kind": "short",
       "turnaround": 0,
       "response": 0,
-      "etime": 8,
+      "etime": 7,
       "rtime": 0
     },
     {
@@ -898,7 +898,17 @@
       "kind": "short",
       "turnaround": 0,
       "response": 0,
-      "etime": 12,
+      "etime": 10,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 13,
       "rtime": 0
     },
     {
@@ -916,49 +926,49 @@
       "w": 3,
       "pol": 1,
       "kind": "short",
-      "turnaround": 0,
+      "turnaround": 1,
       "response": 0,
       "etime": 20,
-      "rtime": 0
-    },
-    {
-      "rep": 1,
-      "w": 3,
-      "pol": 1,
-      "kind": "short",
-      "turnaround": 0,
-      "response": 0,
-      "etime": 24,
-      "rtime": 0
+      "rtime": 1
     },
     {
       "rep": 1,
       "w": 3,
       "pol": 1,
       "kind": "long",
-      "turnaround": 25,
+      "turnaround": 27,
       "response": 1,
-      "etime": 25,
-      "rtime": 13
+      "etime": 27,
+      "rtime": 14
     },
     {
       "rep": 1,
       "w": 3,
       "pol": 1,
       "kind": "long",
-      "turnaround": 26,
+      "turnaround": 29,
       "response": 0,
-      "etime": 26,
-      "rtime": 13
+      "etime": 29,
+      "rtime": 14
     },
     {
       "rep": 2,
       "w": 1,
       "pol": 0,
       "kind": "short",
-      "turnaround": 7,
+      "turnaround": 3,
+      "response": 3,
+      "etime": 3,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 6,
       "response": 1,
-      "etime": 7,
+      "etime": 6,
       "rtime": 1
     },
     {
@@ -967,7 +977,7 @@
       "pol": 0,
       "kind": "short",
       "turnaround": 8,
-      "response": 3,
+      "response": 4,
       "etime": 8,
       "rtime": 1
     },
@@ -975,20 +985,10 @@
       "rep": 2,
       "w": 1,
       "pol": 0,
-      "kind": "short",
-      "turnaround": 9,
-      "response": 5,
-      "etime": 9,
-      "rtime": 1
-    },
-    {
-      "rep": 2,
-      "w": 1,
-      "pol": 0,
       "kind": "long",
-      "turnaround": 13,
+      "turnaround": 12,
       "response": 2,
-      "etime": 13,
+      "etime": 12,
       "rtime": 3
     },
     {
@@ -996,20 +996,20 @@
       "w": 1,
       "pol": 0,
       "kind": "long",
-      "turnaround": 17,
-      "response": 4,
-      "etime": 17,
-      "rtime": 5
+      "turnaround": 18,
+      "response": 3,
+      "etime": 18,
+      "rtime": 6
     },
     {
       "rep": 2,
       "w": 1,
       "pol": 0,
       "kind": "long",
-      "turnaround": 18,
+      "turnaround": 21,
       "response": 0,
-      "etime": 18,
-      "rtime": 7
+      "etime": 21,
+      "rtime": 10
     },
     {
       "rep": 2,
@@ -1106,80 +1106,70 @@
       "w": 2,
       "pol": 0,
       "kind": "hog",
-      "turnaround": 35,
+      "turnaround": 37,
       "response": 1,
-      "etime": 35,
-      "rtime": 17
-    },
-    {
-      "rep": 2,
-      "w": 2,
-      "pol": 0,
-      "kind": "hog",
-      "turnaround": 35,
-      "response": 0,
-      "etime": 35,
+      "etime": 37,
       "rtime": 18
     },
     {
       "rep": 2,
       "w": 2,
-      "pol": 1,
-      "kind": "hog",
-      "turnaround": 32,
-      "response": 1,
-      "etime": 32,
-      "rtime": 16
-    },
-    {
-      "rep": 2,
-      "w": 2,
-      "pol": 1,
-      "kind": "hog",
-      "turnaround": 33,
-      "response": 0,
-      "etime": 33,
-      "rtime": 17
-    },
-    {
-      "rep": 2,
-      "w": 2,
-      "pol": 1,
-      "kind": "interactive",
-      "turnaround": 33,
-      "response": 2,
-      "etime": 33,
-      "rtime": 0
-    },
-    {
-      "rep": 2,
-      "w": 2,
-      "pol": 1,
-      "kind": "interactive",
-      "turnaround": 33,
-      "response": 2,
-      "etime": 33,
-      "rtime": 0
-    },
-    {
-      "rep": 2,
-      "w": 2,
-      "pol": 1,
-      "kind": "interactive",
-      "turnaround": 33,
-      "response": 2,
-      "etime": 33,
-      "rtime": 0
-    },
-    {
-      "rep": 2,
-      "w": 3,
       "pol": 0,
-      "kind": "long",
-      "turnaround": 23,
+      "kind": "hog",
+      "turnaround": 38,
+      "response": 0,
+      "etime": 38,
+      "rtime": 20
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 13,
+      "response": 2,
+      "etime": 13,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 13,
+      "response": 2,
+      "etime": 13,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 13,
+      "response": 2,
+      "etime": 13,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 1,
+      "kind": "hog",
+      "turnaround": 41,
+      "response": 0,
+      "etime": 41,
+      "rtime": 21
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 1,
+      "kind": "hog",
+      "turnaround": 42,
       "response": 1,
-      "etime": 23,
-      "rtime": 11
+      "etime": 42,
+      "rtime": 21
     },
     {
       "rep": 2,
@@ -1236,9 +1226,9 @@
       "w": 3,
       "pol": 0,
       "kind": "short",
-      "turnaround": 1,
-      "response": 1,
-      "etime": 24,
+      "turnaround": 2,
+      "response": 2,
+      "etime": 26,
       "rtime": 0
     },
     {
@@ -1247,19 +1237,19 @@
       "pol": 0,
       "kind": "long",
       "turnaround": 27,
-      "response": 0,
+      "response": 1,
       "etime": 27,
-      "rtime": 16
+      "rtime": 13
     },
     {
       "rep": 2,
       "w": 3,
-      "pol": 1,
+      "pol": 0,
       "kind": "long",
-      "turnaround": 20,
-      "response": 1,
-      "etime": 20,
-      "rtime": 11
+      "turnaround": 32,
+      "response": 0,
+      "etime": 32,
+      "rtime": 19
     },
     {
       "rep": 2,
@@ -1278,7 +1268,7 @@
       "kind": "short",
       "turnaround": 0,
       "response": 0,
-      "etime": 8,
+      "etime": 7,
       "rtime": 0
     },
     {
@@ -1288,7 +1278,7 @@
       "kind": "short",
       "turnaround": 0,
       "response": 0,
-      "etime": 12,
+      "etime": 10,
       "rtime": 0
     },
     {
@@ -1296,30 +1286,30 @@
       "w": 3,
       "pol": 1,
       "kind": "short",
-      "turnaround": 1,
+      "turnaround": 0,
       "response": 0,
-      "etime": 17,
-      "rtime": 1
+      "etime": 13,
+      "rtime": 0
     },
     {
       "rep": 2,
       "w": 3,
       "pol": 1,
       "kind": "short",
-      "turnaround": 1,
+      "turnaround": 0,
       "response": 0,
-      "etime": 21,
-      "rtime": 1
+      "etime": 16,
+      "rtime": 0
     },
     {
       "rep": 2,
       "w": 3,
       "pol": 1,
       "kind": "short",
-      "turnaround": 1,
+      "turnaround": 0,
       "response": 0,
-      "etime": 26,
-      "rtime": 1
+      "etime": 19,
+      "rtime": 0
     },
     {
       "rep": 2,
@@ -1327,9 +1317,19 @@
       "pol": 1,
       "kind": "long",
       "turnaround": 26,
-      "response": 0,
+      "response": 1,
       "etime": 26,
-      "rtime": 12
+      "rtime": 13
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 28,
+      "response": 0,
+      "etime": 28,
+      "rtime": 14
     }
   ]
 }

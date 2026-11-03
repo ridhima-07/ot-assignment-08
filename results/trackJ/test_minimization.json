@@ -1,0 +1,117 @@
+{
+  "repo_commit": "08dca284ba5446a026afdc34067b658f9da989eb",
+  "tests": 769,
+  "covered_lines": 1970,
+  "coverage_percent": 100.0,
+  "sum_test_time_s": 104.025,
+  "bottleneck_top10_tests": [
+    {
+      "test": "tests.test_recipes.PrimeFunctionTests.test_primes",
+      "secs": 67.635,
+      "share_%": 65.01802451333815
+    },
+    {
+      "test": "tests.test_more.TestConcurrentTee.test_concurrent_consumers",
+      "secs": 13.987,
+      "share_%": 13.445806296563326
+    },
+    {
+      "test": "tests.test_recipes.PrimeFunctionTests.test_nth_prime_approximate",
+      "secs": 7.163,
+      "share_%": 6.885844748858448
+    },
+    {
+      "test": "tests.test_more.TestSerialize.test_concurrent_calls",
+      "secs": 1.823,
+      "share_%": 1.7524633501562121
+    },
+    {
+      "test": "tests.test_recipes.PrimeFunctionTests.test_nth_prime_tightened_bound",
+      "secs": 1.781,
+      "share_%": 1.712088440278779
+    },
+    {
+      "test": "tests.test_recipes.RunningMedianTests.test_vs_statistics_median",
+      "secs": 1.722,
+      "share_%": 1.6553713049747656
+    },
+    {
+      "test": "tests.test_more.TestRandomOrderedRange.test_lcg_mitigation",
+      "secs": 1.637,
+      "share_%": 1.5736601778418648
+    },
+    {
+      "test": "tests.test_recipes.PolynomialFromRootsTests.test_large",
+      "secs": 1.629,
+      "share_%": 1.5659697188175918
+    },
+    {
+      "test": "tests.test_more.ExtractTests.test_all_orderings",
+      "secs": 1.578,
+      "share_%": 1.5169430425378514
+    },
+    {
+      "test": "tests.test_recipes.FactorTests.test_cross_check",
+      "secs": 0.556,
+      "share_%": 0.5344869021869744
+    }
+  ],
+  "full suite": {
+    "n_tests": 769,
+    "sum_test_time_s": 104.025,
+    "line_coverage_kept_%": 100.0,
+    "measured_wall_s": 17.670661194000786,
+    "pytest_exit": 0,
+    "pytest_summary": "769 passed, 21194 subtests passed in 20.40s",
+    "mutation_score_%": 100.0
+  },
+  "greedy": {
+    "n_tests": 291,
+    "sum_test_time_s": 94.113,
+    "line_coverage_kept_%": 100.0,
+    "measured_wall_s": 18.351212084000508,
+    "pytest_exit": 0,
+    "pytest_summary": "291 passed, 11310 subtests passed in 17.94s",
+    "solve_secs": 0.17030347399941093,
+    "mutation_score_%": 78.57142857142857
+  },
+  "ILP": {
+    "n_tests": 266,
+    "sum_test_time_s": 92.27300000000001,
+    "line_coverage_kept_%": 100.0,
+    "measured_wall_s": 20.540286991000357,
+    "pytest_exit": 0,
+    "pytest_summary": "266 passed, 11278 subtests passed in 22.54s",
+    "solve_secs": 0.023222259000249323,
+    "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "mutation_score_%": 78.57142857142857
+  },
+  "random (same size as ILP)": {
+    "n_tests": 266,
+    "sum_test_time_s": 16.64,
+    "line_coverage_kept_%": 69.49238578680203,
+    "measured_wall_s": 4.112401782999768,
+    "pytest_exit": 0,
+    "pytest_summary": "266 passed, 1507 subtests passed in 3.89s",
+    "mutation_score_%": 67.85714285714286
+  },
+  "mutants": {
+    "generated": 40,
+    "killed_by_full_suite": 28,
+    "examples": [
+      "more.py:2735 0->1",
+      "more.py:2487 Sub->Add",
+      "more.py:1371 True->False",
+      "more.py:2774 0->1",
+      "more.py:5421 Sub->Add",
+      "more.py:2459 Lt->LtE",
+      "more.py:573 True->False",
+      "more.py:2605 Lt->LtE"
+    ]
+  },
+  "prioritisation_APFD": {
+    "original order": 0.5062232955600967,
+    "random order": 0.7085268437674159,
+    "greedy additional coverage/time": 0.7810235927921234
+  }
+}

@@ -1,0 +1,760 @@
+diff --git a/Makefile b/Makefile
+index a26f3db..7442a75 100644
+--- a/Makefile
++++ b/Makefile
+@@ -151,6 +151,8 @@ UPROGS=\
+ 	$U/_forphan\
+ 	$U/_dorphan\
+ 	$U/_sync\
++	$U/_schedbench\
++	$U/_cowbench\
+ 
+ fs.img: mkfs/mkfs README $(UPROGS)
+ 	mkfs/mkfs fs.img README $(UPROGS)
+diff --git a/kernel/defs.h b/kernel/defs.h
+index 0ae6896..10f7f4a 100644
+--- a/kernel/defs.h
++++ b/kernel/defs.h
+@@ -58,6 +58,9 @@ void            ireclaim(int);
+ 
+ // kalloc.c
+ void*           kalloc(void);
++void            kref_inc(void*);
++int             kref_get(void*);
++uint64          kfreepages(void);
+ void            kfree(void *);
+ void            kinit(void);
+ 
+@@ -98,6 +101,9 @@ void            sleep_prepare(void*);
+ void            sleep(void);
+ void            userinit(void);
+ int             kwait(uint64);
++int             kwaitstat(uint64, uint64);
++int             sched_tick(struct proc*);
++extern int      schedpolicy;
+ void            wakeup(void*);
+ void            yield(void);
+ int             either_copyout(int user_dst, uint64 dst, void *src, uint64 len);
+@@ -166,6 +172,9 @@ void            uvmclear(pagetable_t, uint64);
+ pte_t *         walk(pagetable_t, uint64, int);
+ uint64          walkaddr(pagetable_t, uint64);
+ int             copyout(pagetable_t, uint64, uint64, char *, uint64);
++uint64          cowfault(pagetable_t, uint64);
++extern int      cow_enabled;
++extern uint64   cow_faults, cow_copies, fork_pages_copied, fork_pages_shared;
+ int             copyin(pagetable_t, uint64, char *, uint64, uint64);
+ int             copyinstr(pagetable_t, uint64, char *, uint64, uint64);
+ int             ismapped(pagetable_t, uint64);
+diff --git a/kernel/kalloc.c b/kernel/kalloc.c
+index 2fcec38..3596fde 100644
+--- a/kernel/kalloc.c
++++ b/kernel/kalloc.c
+@@ -23,10 +23,19 @@ struct {
+   struct run *freelist;
+ } kmem;
+ 
++// [A8 Track G] reference count per physical page (copy-on-write fork)
++#define PA2IDX(pa) (((uint64)(pa) - KERNBASE) / PGSIZE)
++struct {
++  struct spinlock lock;
++  int ref[(PHYSTOP - KERNBASE) / PGSIZE];
++} kref;
++uint64 nfree;   // free pages (protected by kmem.lock)
++
+ void
+ kinit()
+ {
+   initlock(&kmem.lock, "kmem");
++  initlock(&kref.lock, "kref");
+   freerange(end, (void *)PHYSTOP);
+ }
+ 
+@@ -35,8 +44,10 @@ freerange(void *pa_start, void *pa_end)
+ {
+   char *p;
+   p = (char *)PGROUNDUP((uint64)pa_start);
+-  for (; p + PGSIZE <= (char *)pa_end; p += PGSIZE)
++  for (; p + PGSIZE <= (char *)pa_end; p += PGSIZE) {
++    kref.ref[PA2IDX(p)] = 1;
+     kfree(p);
++  }
+ }
+ 
+ // Free the page of physical memory pointed at by pa,
+@@ -51,6 +62,15 @@ kfree(void *pa)
+   if (((uint64)pa % PGSIZE) != 0 || (char *)pa < end || (uint64)pa >= PHYSTOP)
+     panic("kfree");
+ 
++  // [A8] only free when the last reference goes away
++  acquire(&kref.lock);
++  if (kref.ref[PA2IDX(pa)] < 1)
++    panic("kfree: ref");
++  int left = --kref.ref[PA2IDX(pa)];
++  release(&kref.lock);
++  if (left > 0)
++    return;
++
+   // Fill with junk to catch dangling refs.
+   memset(pa, 1, PGSIZE);
+ 
+@@ -59,6 +79,7 @@ kfree(void *pa)
+   acquire(&kmem.lock);
+   r->next = kmem.freelist;
+   kmem.freelist = r;
++  nfree++;
+   release(&kmem.lock);
+ }
+ 
+@@ -72,11 +93,43 @@ kalloc(void)
+ 
+   acquire(&kmem.lock);
+   r = kmem.freelist;
+-  if (r)
++  if (r) {
+     kmem.freelist = r->next;
++    nfree--;
++  }
+   release(&kmem.lock);
+ 
+-  if (r)
++  if (r) {
+     memset((char *)r, 5, PGSIZE); // fill with junk
++    acquire(&kref.lock);
++    kref.ref[PA2IDX(r)] = 1;
++    release(&kref.lock);
++  }
+   return (void *)r;
+ }
++
++void
++kref_inc(void *pa)
++{
++  acquire(&kref.lock);
++  kref.ref[PA2IDX(pa)]++;
++  release(&kref.lock);
++}
++
++int
++kref_get(void *pa)
++{
++  acquire(&kref.lock);
++  int r = kref.ref[PA2IDX(pa)];
++  release(&kref.lock);
++  return r;
++}
++
++uint64
++kfreepages(void)
++{
++  acquire(&kmem.lock);
++  uint64 n = nfree;
++  release(&kmem.lock);
++  return n;
++}
+diff --git a/kernel/proc.c b/kernel/proc.c
+index 31f23a3..e3e75f4 100644
+--- a/kernel/proc.c
++++ b/kernel/proc.c
+@@ -5,6 +5,8 @@
+ #include "spinlock.h"
+ #include "proc.h"
+ #include "defs.h"
++extern uint ticks;
++extern struct spinlock tickslock;
+ 
+ struct cpu cpus[NCPU];
+ 
+@@ -124,6 +126,11 @@ allocproc(void)
+ found:
+   p->pid = allocpid();
+   p->state = USED;
++  // Read ticks WITHOUT tickslock: we hold p->lock here, while clockintr() holds tickslock and then
++  // takes every p->lock inside wakeup(). Taking tickslock here inverted that order and deadlocked
++  // under SMP (usertests "reparent" hung). A racy read of a uint is fine for statistics.
++  p->ctime = ticks;
++  p->ftime = -1; p->etime = 0; p->rtime = 0; p->level = 0; p->qticks = 0;
+ 
+   // Allocate a trapframe page.
+   if ((p->trapframe = (struct trapframe *)kalloc()) == 0) {
+@@ -355,6 +362,7 @@ kexit(int status)
+   acquire(&p->lock);
+ 
+   p->xstate = status;
++  p->etime = ticks;   // no tickslock: same lock-order reason as in allocproc()
+   p->state = ZOMBIE;
+ 
+   release(&wait_lock);
+@@ -367,7 +375,7 @@ kexit(int status)
+ // Wait for a child process to exit and return its pid.
+ // Return -1 if this process has no children.
+ int
+-kwait(uint64 addr)
++kwaitstat(uint64 addr, uint64 statp)
+ {
+   struct proc *pp;
+   int havekids, pid;
+@@ -394,6 +402,14 @@ kwait(uint64 addr)
+             release(&wait_lock);
+             return -1;
+           }
++          if (statp != 0) {
++            struct procstat st = { pp->pid, pp->ctime, pp->ftime, pp->etime, pp->rtime };
++            if (copyout(p->pagetable, p->sz, statp, (char *)&st, sizeof(st)) < 0) {
++              release(&pp->lock);
++              release(&wait_lock);
++              return -1;
++            }
++          }
+           pp->parent = 0;
+           freeproc(pp);
+           release(&pp->lock);
+@@ -418,6 +434,50 @@ kwait(uint64 addr)
+   }
+ }
+ 
++int
++kwait(uint64 addr)
++{
++  return kwaitstat(addr, 0);
++}
++
++// [A8 Track G] runtime-selectable policy (SCHED_RR is the original xv6 behaviour)
++int schedpolicy = SCHED_RR;
++static const int mlfq_quantum[MLFQ_LEVELS] = { 1, 2, 4 };
++static uint lastboost;
++
++// Called from the timer interrupt with the running process. Returns 1 if the
++// process should give up the CPU now. Under RR this is every tick (original xv6).
++int
++sched_tick(struct proc *p)
++{
++  int give_up = 1;
++  acquire(&p->lock);
++  p->rtime++;
++  if (schedpolicy == SCHED_MLFQ) {
++    p->qticks++;
++    if (p->qticks >= mlfq_quantum[p->level]) {
++      if (p->level < MLFQ_LEVELS - 1)
++        p->level++;            // used its whole allotment: demote
++      p->qticks = 0;
++    } else {
++      give_up = 0;             // keep running until the quantum is used up
++    }
++  }
++  int mylevel = p->level;
++  release(&p->lock);
++  // MLFQ rule: a higher-priority process that became RUNNABLE (e.g. an interactive job
++  // waking from sleep) preempts the current one even if its quantum is not used up.
++  // (Bug fixed: without this, a demoted CPU hog kept the CPU for its whole 4-tick quantum
++  //  and interactive jobs got 51% SLOWER than under round robin.)
++  // The unlocked reads are a scheduling hint only; scheduler() re-checks under the lock.
++  if (!give_up) {
++    for (struct proc *q = proc; q < &proc[NPROC]; q++) {
++      if (q != p && q->state == RUNNABLE && q->level < mylevel) { give_up = 1; break; }
++    }
++  }
++  return give_up;
++}
++
+ // Per-CPU process scheduler.
+ // Each CPU calls scheduler() after setting itself up.
+ // Scheduler never returns.  It loops, doing:
+@@ -442,9 +502,47 @@ scheduler(void)
+     intr_off();
+ 
+     int found = 0;
++    if (schedpolicy == SCHED_MLFQ) {
++      // priority boost: avoid starvation of demoted processes
++      if (ticks - lastboost >= MLFQ_BOOST) {
++        lastboost = ticks;
++        for (p = proc; p < &proc[NPROC]; p++) {
++          acquire(&p->lock);
++          p->level = 0; p->qticks = 0;
++          release(&p->lock);
++        }
++      }
++      // pick the highest-priority RUNNABLE process; round-robin within a level
++      static int rr_next[MLFQ_LEVELS];
++      struct proc *pick = 0;
++      for (int lv = 0; lv < MLFQ_LEVELS && pick == 0; lv++) {
++        for (int k = 0; k < NPROC; k++) {
++          struct proc *q = &proc[(rr_next[lv] + k) % NPROC];
++          acquire(&q->lock);
++          if (q->state == RUNNABLE && q->level == lv) {
++            pick = q;                          // keep q->lock held
++            rr_next[lv] = (q - proc + 1) % NPROC;
++            break;
++          }
++          release(&q->lock);
++        }
++      }
++      if (pick) {
++        p = pick;
++        if (p->ftime < 0) p->ftime = ticks;
++        p->state = RUNNING;
++        c->proc = p;
++        swtch(&c->context, &p->context);
++        mycpu()->intena = 0;
++        c->proc = 0;
++        found = 1;
++        release(&p->lock);
++      }
++    } else {
+     for (p = proc; p < &proc[NPROC]; p++) {
+       acquire(&p->lock);
+       if (p->state == RUNNABLE) {
++        if (p->ftime < 0) p->ftime = ticks;
+         // Switch to chosen process.  It is the process's job
+         // to release its lock and then reacquire it
+         // before jumping back to us.
+@@ -462,6 +560,7 @@ scheduler(void)
+       }
+       release(&p->lock);
+     }
++    }
+     if (found == 0) {
+       // nothing to run; stop running on this core until an interrupt.
+       asm volatile("wfi");
+diff --git a/kernel/proc.h b/kernel/proc.h
+index 5603697..dba463b 100644
+--- a/kernel/proc.h
++++ b/kernel/proc.h
+@@ -101,4 +101,19 @@ struct proc {
+   struct file *ofile[NOFILE];  // Open files
+   struct inode *cwd;           // Current directory
+   char name[16];               // Process name (debugging)
++
++  // [A8 Track G] accounting (in timer ticks) and MLFQ state; protected by p->lock
++  int ctime;                   // tick when created
++  int ftime;                   // tick when first scheduled (-1 = never)
++  int etime;                   // tick when exited
++  int rtime;                   // timer interrupts while RUNNING
++  int level;                   // MLFQ queue (0 = highest priority)
++  int qticks;                  // ticks used at current level
+ };
++
++// [A8 Track G] scheduling policy and stats returned by waitstat()
++#define SCHED_RR   0
++#define SCHED_MLFQ 1
++#define MLFQ_LEVELS 3
++#define MLFQ_BOOST 50
++struct procstat { int pid, ctime, ftime, etime, rtime; };
+diff --git a/kernel/riscv.h b/kernel/riscv.h
+index 3e982ab..71d0293 100644
+--- a/kernel/riscv.h
++++ b/kernel/riscv.h
+@@ -397,6 +397,7 @@ typedef uint64 *pagetable_t; // 512 PTEs
+ #define PTE_W (1L << 2)
+ #define PTE_X (1L << 3)
+ #define PTE_U (1L << 4) // user can access
++#define PTE_COW (1L << 8) // [A8 Track G] RSW bit: shared copy-on-write page
+ 
+ // shift a physical address to the right place for a PTE.
+ #define PA2PTE(pa) ((((uint64)pa) >> 12) << 10)
+diff --git a/kernel/syscall.c b/kernel/syscall.c
+index 1800f20..f9bed39 100644
+--- a/kernel/syscall.c
++++ b/kernel/syscall.c
+@@ -95,6 +95,10 @@ extern uint64 sys_getpid(void);
+ extern uint64 sys_sbrk(void);
+ extern uint64 sys_pause(void);
+ extern uint64 sys_uptime(void);
++extern uint64 sys_setsched(void);
++extern uint64 sys_waitstat(void);
++extern uint64 sys_setcow(void);
++extern uint64 sys_memstat(void);
+ extern uint64 sys_open(void);
+ extern uint64 sys_write(void);
+ extern uint64 sys_mknod(void);
+@@ -122,6 +126,10 @@ static uint64 (*syscalls[])(void) = {
+   [SYS_sbrk]    = sys_sbrk,
+   [SYS_pause]   = sys_pause,
+   [SYS_uptime]  = sys_uptime,
++  [SYS_setsched] = sys_setsched,
++  [SYS_waitstat] = sys_waitstat,
++  [SYS_setcow] = sys_setcow,
++  [SYS_memstat] = sys_memstat,
+   [SYS_open]    = sys_open,
+   [SYS_write]   = sys_write,
+   [SYS_mknod]   = sys_mknod,
+diff --git a/kernel/syscall.h b/kernel/syscall.h
+index 5a4a39f..88a79e9 100644
+--- a/kernel/syscall.h
++++ b/kernel/syscall.h
+@@ -21,3 +21,7 @@
+ #define SYS_mkdir  20
+ #define SYS_close  21
+ #define SYS_sync   22
++#define SYS_setsched 23
++#define SYS_waitstat 24
++#define SYS_setcow 25
++#define SYS_memstat 26
+diff --git a/kernel/sysproc.c b/kernel/sysproc.c
+index cd25557..d7ead38 100644
+--- a/kernel/sysproc.c
++++ b/kernel/sysproc.c
+@@ -110,3 +110,49 @@ sys_uptime(void)
+   release(&tickslock);
+   return xticks;
+ }
++
++// [A8 Track G] select the scheduling policy (0 = round robin, 1 = MLFQ). Returns the old one.
++uint64
++sys_setsched(void)
++{
++  int pol;
++  argint(0, &pol);
++  if (pol != SCHED_RR && pol != SCHED_MLFQ)
++    return -1;
++  int old = schedpolicy;
++  schedpolicy = pol;
++  return old;
++}
++
++// [A8 Track G] wait() that also returns the child's timing statistics.
++uint64
++sys_waitstat(void)
++{
++  uint64 status, st;
++  argaddr(0, &status);
++  argaddr(1, &st);
++  return kwaitstat(status, st);
++}
++
++// [A8 Track G] enable/disable copy-on-write fork. Returns the old setting.
++uint64
++sys_setcow(void)
++{
++  int on;
++  argint(0, &on);
++  int old = cow_enabled;
++  cow_enabled = (on != 0);
++  return old;
++}
++
++// [A8 Track G] memory statistics + a fine-grained clock (10 MHz timebase under QEMU)
++struct memstat { uint64 freepages, cow_faults, cow_copies, fork_pages_copied, fork_pages_shared, time; };
++uint64
++sys_memstat(void)
++{
++  uint64 addr;
++  argaddr(0, &addr);
++  struct memstat m = { kfreepages(), cow_faults, cow_copies, fork_pages_copied, fork_pages_shared, r_time() };
++  struct proc *p = myproc();
++  return copyout(p->pagetable, p->sz, addr, (char *)&m, sizeof(m));
++}
+diff --git a/kernel/trap.c b/kernel/trap.c
+index 00e99bc..50afe54 100644
+--- a/kernel/trap.c
++++ b/kernel/trap.c
+@@ -68,6 +68,8 @@ usertrap(void)
+     syscall();
+   } else if ((which_dev = devintr()) != 0) {
+     // ok
++  } else if (r_scause() == 15 && cowfault(p->pagetable, r_stval()) != 0) {
++    // [A8] write to a copy-on-write page: now private and writable
+   } else if ((r_scause() == 15 || r_scause() == 13) &&
+              vmfault(p->pagetable, p->sz, r_stval(),
+                      (r_scause() == 13) ? 1 : 0) != 0) {
+@@ -82,7 +84,7 @@ usertrap(void)
+     kexit(-1);
+ 
+   // give up the CPU if this is a timer interrupt.
+-  if (which_dev == 2)
++  if (which_dev == 2 && sched_tick(myproc()))
+     yield();
+ 
+   prepare_return();
+@@ -154,7 +156,7 @@ kerneltrap()
+   }
+ 
+   // give up the CPU if this is a timer interrupt.
+-  if (which_dev == 2 && myproc() != 0)
++  if (which_dev == 2 && myproc() != 0 && sched_tick(myproc()))
+     yield();
+ 
+   // the yield() may have caused some traps to occur,
+diff --git a/kernel/vm.c b/kernel/vm.c
+index f50650b..939485b 100644
+--- a/kernel/vm.c
++++ b/kernel/vm.c
+@@ -295,9 +295,67 @@ uvmfree(pagetable_t pagetable, uint64 sz)
+ // physical memory.
+ // returns 0 on success, -1 on failure.
+ // frees any allocated pages on failure.
++// [A8 Track G] runtime switch (0 = original eager copy, 1 = copy-on-write) and counters
++int cow_enabled = 0;
++uint64 cow_faults, cow_copies, fork_pages_copied, fork_pages_shared;
++
++// Resolve a write to a copy-on-write page. Returns the physical address now mapped
++// writable at va, or 0 if va is not a COW page / out of memory.
++uint64
++cowfault(pagetable_t pagetable, uint64 va)
++{
++  if (va >= MAXVA)
++    return 0;
++  va = PGROUNDDOWN(va);
++  pte_t *pte = walk(pagetable, va, 0);
++  if (pte == 0 || (*pte & PTE_V) == 0 || (*pte & PTE_U) == 0 || (*pte & PTE_COW) == 0)
++    return 0;
++  uint64 pa = PTE2PA(*pte);
++  uint flags = (PTE_FLAGS(*pte) | PTE_W) & ~PTE_COW;
++  __sync_fetch_and_add(&cow_faults, 1);
++  if (kref_get((void *)pa) == 1) {        // last sharer: just take the page back
++    *pte = PA2PTE(pa) | flags;
++    sfence_vma();
++    return pa;
++  }
++  char *mem = kalloc();
++  if (mem == 0)
++    return 0;
++  memmove(mem, (char *)pa, PGSIZE);
++  *pte = PA2PTE((uint64)mem) | flags;
++  sfence_vma();
++  kfree((void *)pa);                      // drop our reference to the shared page
++  __sync_fetch_and_add(&cow_copies, 1);
++  return (uint64)mem;
++}
++
++int
++uvmcopy_cow(pagetable_t old, pagetable_t new, uint64 sz)
++{
++  pte_t *pte;
++  uint64 pa, i;
++  for (i = 0; i < sz; i += PGSIZE) {
++    if ((pte = walk(old, i, 0)) == 0 || (*pte & PTE_V) == 0)
++      continue;
++    if (*pte & PTE_W)                     // writable -> shared read-only + COW in BOTH tables
++      *pte = (*pte & ~PTE_W) | PTE_COW;
++    pa = PTE2PA(*pte);
++    if (mappages(new, i, PGSIZE, pa, PTE_FLAGS(*pte)) != 0) {
++      uvmunmap(new, 0, i / PGSIZE, 1);
++      return -1;
++    }
++    kref_inc((void *)pa);
++    __sync_fetch_and_add(&fork_pages_shared, 1);
++  }
++  sfence_vma();                           // parent's PTEs changed
++  return 0;
++}
++
+ int
+ uvmcopy(pagetable_t old, pagetable_t new, uint64 sz)
+ {
++  if (cow_enabled)
++    return uvmcopy_cow(old, new, sz);
+   pte_t *pte;
+   uint64 pa, i;
+   uint flags;
+@@ -313,6 +371,7 @@ uvmcopy(pagetable_t old, pagetable_t new, uint64 sz)
+     if ((mem = kalloc()) == 0)
+       goto err;
+     memmove(mem, (char *)pa, PGSIZE);
++    __sync_fetch_and_add(&fork_pages_copied, 1);
+     if (mappages(new, i, PGSIZE, (uint64)mem, flags) != 0) {
+       kfree(mem);
+       goto err;
+@@ -360,6 +419,12 @@ copyout(pagetable_t pagetable, uint64 psz, uint64 dstva, char *src, uint64 len)
+     }
+ 
+     pte = walk(pagetable, va0, 0);
++    // [A8] kernel writing into a shared COW page: break the sharing first
++    if ((*pte & PTE_COW) && (*pte & PTE_W) == 0) {
++      if ((pa0 = cowfault(pagetable, va0)) == 0)
++        return -1;
++      pte = walk(pagetable, va0, 0);
++    }
+     // forbid copyout over read-only user text pages.
+     if ((*pte & PTE_W) == 0)
+       return -1;
+diff --git a/user/cowbench.c b/user/cowbench.c
+new file mode 100644
+index 0000000..bdf3c7d
+--- /dev/null
++++ b/user/cowbench.c
+@@ -0,0 +1,92 @@
++// [A8 Track G] copy-on-write fork benchmark + correctness test.
++//   cowbench <cow 0|1> <test 1..4>   (test 0 = just set the COW switch)
++// 1 fork+exit latency with a 2 MB heap   2 child writes 0/25/50/100% of the heap
++// 3 memory footprint of 8 live children  4 isolation / correctness (parent & child never see each other's writes)
++#include "kernel/types.h"
++#include "user/user.h"
++
++#define HEAP_PAGES 512
++#define PG 4096
++static char *heap;
++
++static void touch_all(char v) { for (int i = 0; i < HEAP_PAGES; i++) heap[i * PG] = v + (i & 7); }
++
++static void snap(struct memstat *m) { if (memstat(m) < 0) { printf("memstat failed\n"); exit(1); } }
++
++int main(int argc, char *argv[]) {
++  if (argc < 3) { printf("usage: cowbench cow test\n"); exit(1); }
++  int cow = atoi(argv[1]), test = atoi(argv[2]);
++  setcow(cow);
++  if (test == 0) { printf("cow set to %d\n", cow); exit(0); }   // leave COW on (e.g. for usertests)
++  heap = sbrk(HEAP_PAGES * PG);
++  if (heap == (char *)-1) { printf("sbrk failed\n"); exit(1); }
++  touch_all(1);
++  struct memstat a, b;
++
++  if (test == 1) {
++    int iters = 20;
++    snap(&a);
++    for (int k = 0; k < iters; k++) {
++      int pid = fork();
++      if (pid == 0) exit(0);
++      wait(0);
++    }
++    snap(&b);
++    printf("COW test=1 cow=%d iters=%d avg_us=%d pages_copied=%d pages_shared=%d cow_faults=%d\n", cow, iters,
++           (int)((b.time - a.time) / 10 / iters), (int)(b.fork_pages_copied - a.fork_pages_copied + b.cow_copies - a.cow_copies),
++           (int)(b.fork_pages_shared - a.fork_pages_shared), (int)(b.cow_faults - a.cow_faults));
++  } else if (test == 2) {
++    int pct[] = { 0, 25, 50, 100 };
++    for (int j = 0; j < 4; j++) {
++      int iters = 5;
++      snap(&a);
++      for (int k = 0; k < iters; k++) {
++        int pid = fork();
++        if (pid == 0) {
++          int n = HEAP_PAGES * pct[j] / 100;
++          for (int i = 0; i < n; i++) heap[i * PG] = 9;
++          exit(0);
++        }
++        wait(0);
++      }
++      snap(&b);
++      printf("COW test=2 cow=%d write_pct=%d avg_us=%d pages_copied=%d cow_faults=%d\n", cow, pct[j],
++             (int)((b.time - a.time) / 10 / iters), (int)(b.fork_pages_copied - a.fork_pages_copied + b.cow_copies - a.cow_copies),
++             (int)(b.cow_faults - a.cow_faults));
++    }
++  } else if (test == 3) {
++    int kids = 8, pids[8];
++    snap(&a);
++    for (int k = 0; k < kids; k++) {
++      pids[k] = fork();
++      if (pids[k] == 0) { pause(10); exit(0); }
++    }
++    snap(&b);
++    printf("COW test=3 cow=%d children=%d pages_used_by_children=%d free_before=%d free_after=%d\n", cow, kids,
++           (int)(a.freepages - b.freepages), (int)a.freepages, (int)b.freepages);
++    for (int k = 0; k < kids; k++) wait(0);
++  } else if (test == 4) {
++    int bad = 0;
++    touch_all(1);
++    int pid = fork();
++    if (pid == 0) {
++      for (int i = 0; i < HEAP_PAGES; i++) if (heap[i * PG] != 1 + (i & 7)) exit(1);   // sees parent's data
++      touch_all(50);                                                                   // private writes
++      int g = fork();                                                                  // nested COW
++      if (g == 0) { touch_all(90); exit(0); }
++      int st; wait(&st);
++      for (int i = 0; i < HEAP_PAGES; i++) if (heap[i * PG] != 50 + (i & 7)) exit(2);  // grandchild did not leak
++      exit(st == 0 ? 0 : 3);
++    }
++    int st; wait(&st);
++    for (int i = 0; i < HEAP_PAGES; i++) if (heap[i * PG] != 1 + (i & 7)) bad++;
++    // a pipe write (copyout into a COW page) must also be isolated
++    int fd[2]; pipe(fd);
++    if (fork() == 0) { read(fd[0], heap, 16); exit(heap[0] == 'x' ? 0 : 4); }
++    write(fd[1], "xxxxxxxxxxxxxxxx", 16); int st2; wait(&st2);
++    printf("COW test=4 cow=%d child_status=%d copyout_child_status=%d parent_corrupted_pages=%d parent_first_byte=%d RESULT=%s\n",
++           cow, st, st2, bad, heap[0], (st == 0 && st2 == 0 && bad == 0 && heap[0] == 1) ? "PASS" : "FAIL");
++  }
++  setcow(0);
++  exit(0);
++}
+diff --git a/user/schedbench.c b/user/schedbench.c
+new file mode 100644
+index 0000000..f08873a
+--- /dev/null
++++ b/user/schedbench.c
+@@ -0,0 +1,56 @@
++// [A8 Track G] scheduler benchmark: schedbench <policy 0=RR|1=MLFQ> <workload 1|2|3>  (workload 0 = just set policy)
++// Prints one STAT line per child: kind ctime ftime etime rtime (all in timer ticks).
++#include "kernel/types.h"
++#include "user/user.h"
++
++#define UNIT 24000000  // spin iterations ~ 1 timer tick under QEMU (calibrated, see README)
++
++static void spin(int units) {
++  volatile unsigned long x = 0;
++  for (long u = 0; u < units; u++)
++    for (long i = 0; i < UNIT; i++) x += i;
++}
++
++static int kinds[64];   // pid -> kind index (pids are small in xv6)
++static char *names[] = { "long", "short", "hog", "interactive" };
++
++static int launch(int kind, int units, int interactive_iters) {
++  int pid = fork();
++  if (pid < 0) { printf("fork failed\n"); exit(1); }
++  if (pid == 0) {
++    if (interactive_iters > 0) {
++      for (int k = 0; k < interactive_iters; k++) { pause(1); spin(units); }
++    } else {
++      spin(units);
++    }
++    exit(0);
++  }
++  kinds[pid % 64] = kind;
++  return pid;
++}
++
++int main(int argc, char *argv[]) {
++  if (argc < 3) { printf("usage: schedbench policy workload\n"); exit(1); }
++  int policy = atoi(argv[1]), w = atoi(argv[2]), n = 0;
++  if (setsched(policy) < 0) { printf("setsched failed\n"); exit(1); }
++  if (w == 0) { printf("policy set to %d\n", policy); exit(0); }   // leave policy on (e.g. for usertests)
++  int t0 = uptime();
++  if (w == 1) {                 // mixed batch, all arrive together, longest first in the table
++    int len[] = { 12, 2, 6, 1, 8, 3 };
++    for (int i = 0; i < 6; i++) launch(len[i] >= 6 ? 0 : 1, len[i], 0), n++;
++  } else if (w == 2) {          // CPU hogs + interactive processes that sleep between bursts
++    for (int i = 0; i < 2; i++) launch(2, 30, 0), n++;
++    for (int i = 0; i < 3; i++) launch(3, 0, 10), n++;   // 10 x (pause 1 tick, then return to sleep)
++  } else {                      // long jobs running, short jobs arrive over time
++    for (int i = 0; i < 2; i++) launch(0, 20, 0), n++;
++    for (int i = 0; i < 6; i++) { pause(3); launch(1, 1, 0); n++; }
++  }
++  for (int i = 0; i < n; i++) {
++    struct procstat st; int status;
++    if (waitstat(&status, &st) < 0) { printf("waitstat failed\n"); exit(1); }
++    printf("STAT w=%d pol=%d kind=%s pid=%d ctime=%d ftime=%d etime=%d rtime=%d\n", w, policy,
++           names[kinds[st.pid % 64]], st.pid, st.ctime - t0, st.ftime - t0, st.etime - t0, st.rtime);
++  }
++  setsched(0);
++  exit(0);
++}
+diff --git a/user/user.h b/user/user.h
+index 29aad59..30149f2 100644
+--- a/user/user.h
++++ b/user/user.h
+@@ -41,6 +41,13 @@ void *memcpy(void *, const void *, uint);
+ char *sbrk(int);
+ char *sbrklazy(int);
+ 
++struct procstat { int pid, ctime, ftime, etime, rtime; };
++int setsched(int);
++int waitstat(int*, struct procstat*);
++struct memstat { uint64 freepages, cow_faults, cow_copies, fork_pages_copied, fork_pages_shared, time; };
++int setcow(int);
++int memstat(struct memstat*);
++
+ // printf.c
+ void fprintf(int, const char *, ...) __attribute__((format(printf, 2, 3)));
+ void printf(const char *, ...) __attribute__((format(printf, 1, 2)));
+diff --git a/user/usys.pl b/user/usys.pl
+index 4d054e8..b6c6b70 100755
+--- a/user/usys.pl
++++ b/user/usys.pl
+@@ -42,4 +42,8 @@ entry("getpid");
+ entry("sbrk");
+ entry("pause");
+ entry("uptime");
++entry("setsched");
++entry("waitstat");
++entry("setcow");
++entry("memstat");
+ entry("sync");

@@ -46,9 +46,16 @@ def profile():
     times = {}
     for tc in ET.parse(jx).getroot().iter("testcase"):
         tid = f"{tc.get('classname')}.{tc.get('name')}"; times[tid] = float(tc.get("time", 0))
-    # map coverage context ids to junit ids (same dotted form)
-    tests = sorted(set(times) & set(test_lines)) + sorted(t for t in times if t not in test_lines)
-    lines = sorted(set().union(*test_lines.values()))
+    # Coverage names a context by the class that DEFINES the test method (e.g. a mixin), pytest/junit by the
+    # subclass that RUNS it. Map such contexts onto every junit test in the same module with the same method name.
+    # (Bug fixed: without this, lines covered only by inherited tests were uncoverable and the ILP was infeasible.)
+    for ctx in [c for c in list(test_lines) if c not in times]:
+        mod, meth = ctx.rsplit(".", 2)[0], ctx.rsplit(".", 1)[1]
+        for jid in [j for j in times if j.startswith(mod + ".") and j.endswith("." + meth) and j not in test_lines]:
+            test_lines[jid] = set(test_lines[ctx])
+        test_lines.pop(ctx)
+    tests = sorted(times)
+    lines = sorted(set().union(*[test_lines.get(t, set()) for t in tests]))
     return tests, times, test_lines, lines, t_cov, cov["totals"]
 
 
