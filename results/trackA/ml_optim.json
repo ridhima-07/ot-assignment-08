@@ -1,0 +1,265 @@
+{
+  "A6_regularisation": {
+    "0.0": {
+      "train_loss": 0.03435735221010169,
+      "||w||": 6.900850407488439,
+      "train_acc": 0.992462311557789,
+      "test_acc": 0.9590643274853801
+    },
+    "0.001": {
+      "train_loss": 0.05223599222349616,
+      "||w||": 4.545953984581844,
+      "train_acc": 0.992462311557789,
+      "test_acc": 0.9532163742690059
+    },
+    "0.01": {
+      "train_loss": 0.09170132433993686,
+      "||w||": 2.294631760357708,
+      "train_acc": 0.992462311557789,
+      "test_acc": 0.9590643274853801
+    },
+    "0.1": {
+      "train_loss": 0.18886863325678938,
+      "||w||": 1.1069868673189,
+      "train_acc": 0.9773869346733668,
+      "test_acc": 0.9473684210526315
+    },
+    "1.0": {
+      "train_loss": 0.37843151462187297,
+      "||w||": 0.4449604009970866,
+      "train_acc": 0.9371859296482412,
+      "test_acc": 0.9239766081871345
+    }
+  },
+  "A7_optimizers": {
+    "GD (full batch)": {
+      "lr": 1.0,
+      "batch": 398,
+      "subopt_mean": 0.0024346400382239397,
+      "subopt_std": 0.0,
+      "test_acc_mean": 0.9590643274853801,
+      "secs_mean": 0.002390331799995238
+    },
+    "SGD (batch=1)": {
+      "lr": 0.05,
+      "batch": 1,
+      "subopt_mean": 0.0012674614102364701,
+      "subopt_std": 0.0023132003887604757,
+      "test_acc_mean": 0.9555555555555554,
+      "secs_mean": 0.19478862580000394
+    },
+    "Mini-batch SGD": {
+      "lr": 0.3,
+      "batch": 32,
+      "subopt_mean": 0.00024829072619404204,
+      "subopt_std": 0.00029956664399608484,
+      "test_acc_mean": 0.9567251461988302,
+      "secs_mean": 0.008498157800011086
+    },
+    "Momentum": {
+      "lr": 0.1,
+      "batch": 32,
+      "subopt_mean": 0.00032047221986182816,
+      "subopt_std": 0.00023961767290423683,
+      "test_acc_mean": 0.9590643274853801,
+      "secs_mean": 0.007403736599997046
+    },
+    "NAG": {
+      "lr": 0.1,
+      "batch": 32,
+      "subopt_mean": 0.0002547842034944708,
+      "subopt_std": 0.00019261584682476917,
+      "test_acc_mean": 0.9590643274853801,
+      "secs_mean": 0.014024340199989637
+    },
+    "AdaGrad": {
+      "lr": 0.3,
+      "batch": 32,
+      "subopt_mean": 0.0014482707120720944,
+      "subopt_std": 0.0026770496780520532,
+      "test_acc_mean": 0.9567251461988302,
+      "secs_mean": 0.008524567199981448
+    },
+    "RMSProp": {
+      "lr": 0.01,
+      "batch": 32,
+      "subopt_mean": 0.0001662701776422526,
+      "subopt_std": 8.52827598914415e-05,
+      "test_acc_mean": 0.9578947368421051,
+      "secs_mean": 0.009580932399990161
+    },
+    "Adam": {
+      "lr": 0.01,
+      "batch": 32,
+      "subopt_mean": 0.00042922111182349955,
+      "subopt_std": 2.0987431191021813e-05,
+      "test_acc_mean": 0.9590643274853801,
+      "secs_mean": 0.01158613659999901
+    },
+    "f_star_sklearn": 0.09170132433994155
+  },
+  "A8_backprop": {
+    "n_params": 65,
+    "gradcheck_rel_error": 4.530040840649914e-10,
+    "GD": {
+      "val_acc_mean": 0.9583333333333334,
+      "val_acc_std": 0.0
+    },
+    "Momentum": {
+      "val_acc_mean": 0.9583333333333334,
+      "val_acc_std": 0.0
+    },
+    "Adam": {
+      "val_acc_mean": 0.9366666666666668,
+      "val_acc_std": 0.0045643546458763685
+    },
+    "RMSProp": {
+      "val_acc_mean": 0.9433333333333334,
+      "val_acc_std": 0.006972166887783938
+    },
+    "interpolation_barrier": 1.4166579917543007
+  },
+  "A9_curvature": {
+    "hessian_eigs": {
+      "min": 0.010006164550159666,
+      "max": 0.6025362438033111,
+      "condition": 60.21650361463389
+    },
+    "hvp_rel_err_pearlmutter": 6.395102919174682e-16,
+    "hvp_rel_err_finite_diff": 1.4555354275288694e-10,
+    "model_fisher_vs_hessian_rel_diff": 1.1967420671790774e-17,
+    "empirical_fisher_vs_hessian_rel_diff": 0.7403723331708558,
+    "lanczos_top5": [
+      0.6025362438033113,
+      0.25447826644771987,
+      0.2391955117913529,
+      0.16399370388287465,
+      0.14310518075611872
+    ],
+    "exact_top5": [
+      0.6025362438033111,
+      0.25447826644772037,
+      0.23919551179135298,
+      0.16399370388287476,
+      0.14310518075611836
+    ],
+    "diag_precond_step_sweep": {
+      "0.5": {
+        "iters": null,
+        "final_subopt": 2.4572108770360583,
+        "budget": 2000
+      },
+      "0.2": {
+        "iters": 96,
+        "final_subopt": 9.867037839561554e-09
+      },
+      "0.1": {
+        "iters": 193,
+        "final_subopt": 9.82373492275368e-09
+      },
+      "0.05": {
+        "iters": 388,
+        "final_subopt": 9.868606681839864e-09
+      },
+      "0.02": {
+        "iters": 973,
+        "final_subopt": 9.935269440486394e-09
+      }
+    },
+    "newton_cg_total_hvps": 112,
+    "iterations_to_1e-8": {
+      "GD (lr=1/L)": {
+        "iters": 1638,
+        "final_subopt": 9.992051880347574e-09
+      },
+      "Diagonal-Hessian preconditioned GD": {
+        "iters": 96,
+        "final_subopt": 9.867037839561554e-09
+      },
+      "Newton (exact H)": {
+        "iters": 7,
+        "final_subopt": 6.431521981653532e-13
+      },
+      "Natural gradient (model Fisher)": {
+        "iters": 7,
+        "final_subopt": 6.431244425897376e-13
+      },
+      "Empirical-Fisher preconditioning": {
+        "iters": null,
+        "final_subopt": 0.00019046916242713985,
+        "budget": 500
+      },
+      "Hessian-free Newton-CG": {
+        "iters": 7,
+        "final_subopt": 6.429579091360438e-13
+      },
+      "Low-rank (top-5) Newton": {
+        "iters": 27,
+        "final_subopt": 6.877877281596945e-09
+      }
+    }
+  },
+  "A10_gauss_newton": {
+    "Gauss-Newton": {
+      "params": [
+        2.4999,
+        1.3217,
+        0.5091
+      ],
+      "final_loss": 0.008949831402912405,
+      "iters_to_converge": 7
+    },
+    "Levenberg-Marquardt (lam=1e-2)": {
+      "params": [
+        2.4999,
+        1.3217,
+        0.5091
+      ],
+      "final_loss": 0.008949831402912405,
+      "iters_to_converge": 7
+    },
+    "Adam": {
+      "params": [
+        2.4999,
+        1.3217,
+        0.5091
+      ],
+      "final_loss": 0.008949831402930581,
+      "iters_to_within_1e-9_of_GN": 273
+    },
+    "GD (lr=0.01)": {
+      "params": [
+        2.4999,
+        1.3217,
+        0.5091
+      ],
+      "final_loss": 0.008949831402912408,
+      "iters_to_within_1e-9_of_GN": 505
+    },
+    "true_params": [
+      2.5,
+      1.3,
+      0.5
+    ]
+  },
+  "A11_continuous_vs_discrete": {
+    "exhaustive_subset": [
+      0,
+      1,
+      3,
+      7
+    ],
+    "exhaustive_sse": 28.28087926143771,
+    "exhaustive_secs": 0.038664716000027965,
+    "lasso_subset": [
+      0,
+      1,
+      6,
+      7
+    ],
+    "lasso_sse_refit": 30.106700806473,
+    "lasso_secs": 0.10753786699996226,
+    "lasso_alpha": 0.027049597304631343,
+    "subsets_enumerated": 495
+  }
+}
