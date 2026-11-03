@@ -1,0 +1,351 @@
+{
+  "results_by_ward_size": {
+    "10": {
+      "Manual baseline": {
+        "cost": 1996.0,
+        "hard_violations": 0.0,
+        "understaffed": 8.4,
+        "no_senior_shifts": 15.8,
+        "requests_worked": 16.6,
+        "night_spread": 8.4,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 0.0005812070000047242
+      },
+      "Greedy": {
+        "cost": 714.0,
+        "hard_violations": 0.0,
+        "understaffed": 3.2,
+        "no_senior_shifts": 4.6,
+        "requests_worked": 11.0,
+        "night_spread": 1.6,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 0.0033476002000043083
+      },
+      "Simulated annealing": {
+        "cost": 291.2,
+        "hard_violations": 0.0,
+        "understaffed": 0.4,
+        "no_senior_shifts": 1.6,
+        "requests_worked": 13.6,
+        "night_spread": 3.6,
+        "overstaffed": 0.6,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 1.4209411240000462
+      },
+      "ILP (HiGHS)": {
+        "cost": 146.8,
+        "hard_violations": 0.0,
+        "understaffed": 0.4,
+        "no_senior_shifts": 1.2,
+        "requests_worked": 3.4,
+        "night_spread": 0.0,
+        "overstaffed": 0.4,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 0.7657702038000025,
+        "proved_optimal_runs": 5,
+        "model_size": "548 vars, 622 constraints",
+        "mean_gap": 0.0
+      }
+    },
+    "20": {
+      "Manual baseline": {
+        "cost": 2458.0,
+        "hard_violations": 0.0,
+        "understaffed": 13.0,
+        "no_senior_shifts": 12.8,
+        "requests_worked": 35.8,
+        "night_spread": 6.4,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 0.0011549886000466359
+      },
+      "Greedy": {
+        "cost": 448.0,
+        "hard_violations": 0.0,
+        "understaffed": 2.4,
+        "no_senior_shifts": 0.4,
+        "requests_worked": 17.8,
+        "night_spread": 1.2,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 0.011389168599998811
+      },
+      "Simulated annealing": {
+        "cost": 185.8,
+        "hard_violations": 0.0,
+        "understaffed": 0.2,
+        "no_senior_shifts": 0.0,
+        "requests_worked": 14.8,
+        "night_spread": 3.4,
+        "overstaffed": 0.4,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 1.6650867280000512
+      },
+      "ILP (HiGHS)": {
+        "cost": 37.0,
+        "hard_violations": 0.0,
+        "understaffed": 0.0,
+        "no_senior_shifts": 0.0,
+        "requests_worked": 3.6,
+        "night_spread": 0.2,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 1.6562092405999465,
+        "proved_optimal_runs": 5,
+        "model_size": "968 vars, 1162 constraints",
+        "mean_gap": 0.0
+      }
+    },
+    "40": {
+      "Manual baseline": {
+        "cost": 4179.0,
+        "hard_violations": 0.0,
+        "understaffed": 31.2,
+        "no_senior_shifts": 6.4,
+        "requests_worked": 64.6,
+        "night_spread": 5.8,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 0.002988463999963642
+      },
+      "Greedy": {
+        "cost": 911.0,
+        "hard_violations": 0.0,
+        "understaffed": 6.0,
+        "no_senior_shifts": 0.2,
+        "requests_worked": 29.4,
+        "night_spread": 1.0,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 0.056988866799929386
+      },
+      "Simulated annealing": {
+        "cost": 413.0,
+        "hard_violations": 0.0,
+        "understaffed": 0.2,
+        "no_senior_shifts": 0.0,
+        "requests_worked": 36.4,
+        "night_spread": 5.8,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 1.8579020569999556
+      },
+      "ILP (HiGHS)": {
+        "cost": 8.0,
+        "hard_violations": 0.0,
+        "understaffed": 0.0,
+        "no_senior_shifts": 0.0,
+        "requests_worked": 0.8,
+        "night_spread": 0.0,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 3.489942504600049,
+        "proved_optimal_runs": 5,
+        "model_size": "1808 vars, 2232 constraints",
+        "mean_gap": 0.0
+      }
+    },
+    "80": {
+      "Manual baseline": {
+        "cost": 7659.0,
+        "hard_violations": 0.0,
+        "understaffed": 59.8,
+        "no_senior_shifts": 3.4,
+        "requests_worked": 144.0,
+        "night_spread": 7.0,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 0.004871055000012348
+      },
+      "Greedy": {
+        "cost": 1944.0,
+        "hard_violations": 0.0,
+        "understaffed": 12.0,
+        "no_senior_shifts": 0.0,
+        "requests_worked": 73.8,
+        "night_spread": 1.2,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 0.1882758267999634
+      },
+      "Simulated annealing": {
+        "cost": 1205.4,
+        "hard_violations": 0.0,
+        "understaffed": 0.8,
+        "no_senior_shifts": 0.0,
+        "requests_worked": 109.8,
+        "night_spread": 5.4,
+        "overstaffed": 0.2,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 2.274604750799972
+      },
+      "ILP (HiGHS)": {
+        "cost": 52.0,
+        "hard_violations": 0.0,
+        "understaffed": 0.0,
+        "no_senior_shifts": 0.0,
+        "requests_worked": 5.2,
+        "night_spread": 0.0,
+        "overstaffed": 0.0,
+        "H1_multi_shift_days": 0.0,
+        "H2_rest_violations": 0.0,
+        "H3_over_contract": 0.0,
+        "H4_4plus_nights": 0.0,
+        "H5_leave_worked": 0.0,
+        "secs": 9.303181671399988,
+        "proved_optimal_runs": 5,
+        "model_size": "3488 vars, 4374 constraints",
+        "mean_gap": 0.0
+      }
+    }
+  },
+  "sensitivity_demand": {
+    "1.0": {
+      "Manual": {
+        "cost": 2335,
+        "hard_violations": 0,
+        "understaffed": 12,
+        "no_senior_shifts": 13,
+        "requests_worked": 32,
+        "night_spread": 7,
+        "overstaffed": 0,
+        "H1_multi_shift_days": 0,
+        "H2_rest_violations": 0,
+        "H3_over_contract": 0,
+        "H4_4plus_nights": 0,
+        "H5_leave_worked": 0
+      },
+      "ILP": {
+        "cost": 0,
+        "hard_violations": 0,
+        "understaffed": 0,
+        "no_senior_shifts": 0,
+        "requests_worked": 0,
+        "night_spread": 0,
+        "overstaffed": 0,
+        "H1_multi_shift_days": 0,
+        "H2_rest_violations": 0,
+        "H3_over_contract": 0,
+        "H4_4plus_nights": 0,
+        "H5_leave_worked": 0
+      }
+    },
+    "1.25": {
+      "Manual": {
+        "cost": 5665,
+        "hard_violations": 0,
+        "understaffed": 47,
+        "no_senior_shifts": 9,
+        "requests_worked": 39,
+        "night_spread": 7,
+        "overstaffed": 0,
+        "H1_multi_shift_days": 0,
+        "H2_rest_violations": 0,
+        "H3_over_contract": 0,
+        "H4_4plus_nights": 0,
+        "H5_leave_worked": 0
+      },
+      "ILP": {
+        "cost": 4670,
+        "hard_violations": 0,
+        "understaffed": 46,
+        "no_senior_shifts": 0,
+        "requests_worked": 7,
+        "night_spread": 0,
+        "overstaffed": 0,
+        "H1_multi_shift_days": 0,
+        "H2_rest_violations": 0,
+        "H3_over_contract": 0,
+        "H4_4plus_nights": 0,
+        "H5_leave_worked": 0
+      }
+    }
+  },
+  "weights": {
+    "under": 100,
+    "senior": 60,
+    "request": 10,
+    "fair": 5,
+    "over": 2
+  },
+  "generator": {
+    "senior_frac": 0.3,
+    "pt_frac": 0.25,
+    "demand_M": [
+      4,
+      6
+    ],
+    "demand_E": [
+      3,
+      5
+    ],
+    "demand_N": [
+      3,
+      3
+    ],
+    "leave_prob": 0.04,
+    "request_prob": 0.2
+  }
+}
