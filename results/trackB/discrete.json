@@ -1,0 +1,235 @@
+{
+  "B1_knapsack": {
+    "20": {
+      "greedy": {
+        "gap_%_mean": 1.0535219116105665,
+        "ms_mean": 0.038386399978662666
+      },
+      "dp": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 0.08729740000035235
+      },
+      "ilp": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 10.445260000005874
+      },
+      "bnb": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 0.258572399991408
+      },
+      "bnb_nodes_mean": 92.8,
+      "capacity_mean": null
+    },
+    "50": {
+      "greedy": {
+        "gap_%_mean": 0.24446666458081096,
+        "ms_mean": 0.051945200016234594
+      },
+      "dp": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 0.20764540000755005
+      },
+      "ilp": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 22.64260000000604
+      },
+      "bnb": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 0.8388276000005135
+      },
+      "bnb_nodes_mean": 254.8,
+      "capacity_mean": null
+    },
+    "100": {
+      "greedy": {
+        "gap_%_mean": 0.09767525126176406,
+        "ms_mean": 0.12129899999990812
+      },
+      "dp": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 0.720943800013174
+      },
+      "ilp": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 73.48818060000895
+      },
+      "bnb": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 2.8751754000154506
+      },
+      "bnb_nodes_mean": 893.2,
+      "capacity_mean": null
+    },
+    "200": {
+      "greedy": {
+        "gap_%_mean": 0.030868814490879404,
+        "ms_mean": 0.1544690000173432
+      },
+      "dp": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 1.6528843999935816
+      },
+      "ilp": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 53.326917199990476
+      },
+      "bnb": {
+        "gap_%_mean": 0.0,
+        "ms_mean": 6.319166599996606
+      },
+      "bnb_nodes_mean": 2203.4,
+      "capacity_mean": null
+    }
+  },
+  "B2_makespan": {
+    "n=10,m=3": {
+      "LPT_gap_%_mean": 1.9117912918740205,
+      "LPT_gap_%_max": 3.1914893617021276,
+      "graham_bound_holds_all": true,
+      "ms_LPT": 0.03232199999274599,
+      "ms_ILP": 45.52835399999822,
+      "ms_BnB": 0.38702660000353717,
+      "bnb_nodes_mean": 65.6
+    },
+    "n=14,m=4": {
+      "LPT_gap_%_mean": 4.134585319191077,
+      "LPT_gap_%_max": 7.5,
+      "graham_bound_holds_all": true,
+      "ms_LPT": 0.042336799992881424,
+      "ms_ILP": 98.67748220000294,
+      "ms_BnB": 3.832122000005711,
+      "bnb_nodes_mean": 1492.6
+    },
+    "n=20,m=5": {
+      "LPT_gap_%_mean": 2.4600234615401453,
+      "LPT_gap_%_max": 3.875968992248062,
+      "graham_bound_holds_all": true,
+      "ms_LPT": 0.08258459999979095,
+      "ms_ILP": 143.62180420001778,
+      "ms_BnB": 2815.228826200007,
+      "bnb_nodes_mean": 968522.4
+    }
+  },
+  "B3_maxcut": {
+    "n": 8,
+    "edges": 18,
+    "max_energy_mismatch_over_2^n": 0.0,
+    "brute_force_opt": 14.0,
+    "random_assignment_mean_cut": 9.0,
+    "greedy_local_search": {
+      "mean": 13.15,
+      "hit_opt_frac": 0.55
+    },
+    "simulated_annealing": {
+      "mean": 14.0,
+      "hit_opt_frac": 1.0
+    },
+    "ilp": 14.0
+  },
+  "B4_penalty_qubo": {
+    "0.0": {
+      "chosen_size": 3,
+      "feasible": false,
+      "matches_constrained_opt": false,
+      "subset": [
+        0,
+        1,
+        4
+      ]
+    },
+    "0.02": {
+      "chosen_size": 4,
+      "feasible": false,
+      "matches_constrained_opt": false,
+      "subset": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    "0.05": {
+      "chosen_size": 5,
+      "feasible": false,
+      "matches_constrained_opt": false,
+      "subset": [
+        0,
+        1,
+        3,
+        4,
+        8
+      ]
+    },
+    "0.1": {
+      "chosen_size": 5,
+      "feasible": false,
+      "matches_constrained_opt": false,
+      "subset": [
+        0,
+        1,
+        3,
+        4,
+        8
+      ]
+    },
+    "0.2": {
+      "chosen_size": 5,
+      "feasible": false,
+      "matches_constrained_opt": false,
+      "subset": [
+        0,
+        1,
+        3,
+        4,
+        8
+      ]
+    },
+    "0.5": {
+      "chosen_size": 5,
+      "feasible": false,
+      "matches_constrained_opt": false,
+      "subset": [
+        0,
+        1,
+        3,
+        4,
+        8
+      ]
+    },
+    "1.0": {
+      "chosen_size": 6,
+      "feasible": true,
+      "matches_constrained_opt": true,
+      "subset": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        8
+      ]
+    },
+    "2.0": {
+      "chosen_size": 6,
+      "feasible": true,
+      "matches_constrained_opt": true,
+      "subset": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        8
+      ]
+    },
+    "constrained_optimum_subset": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      8
+    ],
+    "max_single_term_gain": 0.7766138400204345
+  }
+}
