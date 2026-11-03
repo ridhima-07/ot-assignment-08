@@ -1,0 +1,1335 @@
+{
+  "reps": 3,
+  "smp": 1,
+  "units": "timer ticks (~0.1 s)",
+  "summary": {
+    "W1 mixed batch (6 CPU jobs arrive together)": {
+      "RR (original)": {
+        "avg_turnaround": [
+          11.0,
+          0.8819171036881968
+        ],
+        "avg_response": [
+          2.2777777777777777,
+          0.19245008972987535
+        ],
+        "makespan": [
+          18.0,
+          1.0
+        ],
+        "long_turnaround": [
+          15.555555555555555,
+          0.5091750772173155
+        ],
+        "long_response": [
+          1.777777777777778,
+          0.1924500897298752
+        ],
+        "short_turnaround": [
+          6.4444444444444455,
+          1.3471506281091266
+        ],
+        "short_response": [
+          2.7777777777777772,
+          0.19245008972987535
+        ]
+      },
+      "MLFQ": {
+        "avg_turnaround": [
+          11.777777777777779,
+          0.09622504486493831
+        ],
+        "avg_response": [
+          2.1666666666666665,
+          0.0
+        ],
+        "makespan": [
+          17.666666666666668,
+          0.5773502691896258
+        ],
+        "long_turnaround": [
+          16.555555555555557,
+          0.19245008972987662
+        ],
+        "long_response": [
+          1.6666666666666667,
+          0.0
+        ],
+        "short_turnaround": [
+          7.0,
+          0.0
+        ],
+        "short_response": [
+          2.6666666666666665,
+          0.0
+        ]
+      }
+    },
+    "W2 2 CPU hogs + 3 interactive": {
+      "RR (original)": {
+        "avg_turnaround": [
+          26.533333333333335,
+          0.7023769168568486
+        ],
+        "avg_response": [
+          1.3999999999999997,
+          2.7194799110210365e-16
+        ],
+        "makespan": [
+          33.666666666666664,
+          1.5275252316519465
+        ],
+        "hog_turnaround": [
+          33.333333333333336,
+          1.755942292142123
+        ],
+        "hog_response": [
+          0.5,
+          0.0
+        ],
+        "interactive_turnaround": [
+          22.0,
+          0.0
+        ],
+        "interactive_response": [
+          2.0,
+          0.0
+        ]
+      },
+      "MLFQ": {
+        "avg_turnaround": [
+          33.333333333333336,
+          0.46188021535170304
+        ],
+        "avg_response": [
+          1.3999999999999997,
+          2.7194799110210365e-16
+        ],
+        "makespan": [
+          34.333333333333336,
+          1.5275252316519465
+        ],
+        "hog_turnaround": [
+          33.333333333333336,
+          1.0408329997330665
+        ],
+        "hog_response": [
+          0.5,
+          0.0
+        ],
+        "interactive_turnaround": [
+          33.333333333333336,
+          0.5773502691896258
+        ],
+        "interactive_response": [
+          2.0,
+          0.0
+        ]
+      }
+    },
+    "W3 short jobs arriving behind 2 long jobs": {
+      "RR (original)": {
+        "avg_turnaround": [
+          7.625,
+          0.0
+        ],
+        "avg_response": [
+          1.5416666666666667,
+          0.07216878364870322
+        ],
+        "makespan": [
+          26.666666666666668,
+          0.5773502691896258
+        ],
+        "long_turnaround": [
+          24.833333333333332,
+          0.2886751345948129
+        ],
+        "long_response": [
+          0.5,
+          0.0
+        ],
+        "short_turnaround": [
+          1.8888888888888886,
+          0.09622504486493767
+        ],
+        "short_response": [
+          1.8888888888888886,
+          0.09622504486493767
+        ]
+      },
+      "MLFQ": {
+        "avg_turnaround": [
+          6.25,
+          0.125
+        ],
+        "avg_response": [
+          0.125,
+          0.0
+        ],
+        "makespan": [
+          25.666666666666668,
+          0.5773502691896258
+        ],
+        "long_turnaround": [
+          24.5,
+          1.3228756555322954
+        ],
+        "long_response": [
+          0.5,
+          0.0
+        ],
+        "short_turnaround": [
+          0.16666666666666666,
+          0.2886751345948129
+        ],
+        "short_response": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "raw": [
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 3,
+      "response": 3,
+      "etime": 3,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 6,
+      "response": 1,
+      "etime": 6,
+      "rtime": 1
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 8,
+      "response": 4,
+      "etime": 8,
+      "rtime": 1
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 12,
+      "response": 2,
+      "etime": 12,
+      "rtime": 3
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 16,
+      "response": 3,
+      "etime": 16,
+      "rtime": 5
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 19,
+      "response": 0,
+      "etime": 19,
+      "rtime": 9
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 3,
+      "response": 3,
+      "etime": 3,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 7,
+      "response": 1,
+      "etime": 7,
+      "rtime": 1
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 11,
+      "response": 4,
+      "etime": 11,
+      "rtime": 1
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 15,
+      "response": 2,
+      "etime": 15,
+      "rtime": 3
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 17,
+      "response": 3,
+      "etime": 17,
+      "rtime": 5
+    },
+    {
+      "rep": 0,
+      "w": 1,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 18,
+      "response": 0,
+      "etime": 18,
+      "rtime": 8
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 0,
+      "kind": "interactive",
+      "turnaround": 22,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 0,
+      "kind": "interactive",
+      "turnaround": 22,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 0,
+      "kind": "interactive",
+      "turnaround": 22,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 0,
+      "kind": "hog",
+      "turnaround": 31,
+      "response": 1,
+      "etime": 31,
+      "rtime": 15
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 0,
+      "kind": "hog",
+      "turnaround": 32,
+      "response": 0,
+      "etime": 32,
+      "rtime": 16
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 1,
+      "kind": "hog",
+      "turnaround": 33,
+      "response": 1,
+      "etime": 33,
+      "rtime": 17
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 33,
+      "response": 2,
+      "etime": 33,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 33,
+      "response": 2,
+      "etime": 33,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 33,
+      "response": 2,
+      "etime": 33,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 2,
+      "pol": 1,
+      "kind": "hog",
+      "turnaround": 36,
+      "response": 0,
+      "etime": 36,
+      "rtime": 18
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 23,
+      "response": 1,
+      "etime": 23,
+      "rtime": 11
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 6,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 10,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 14,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 18,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 25,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 26,
+      "response": 0,
+      "etime": 26,
+      "rtime": 14
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 4,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 8,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 12,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 16,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 20,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 24,
+      "rtime": 0
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 25,
+      "response": 1,
+      "etime": 25,
+      "rtime": 13
+    },
+    {
+      "rep": 0,
+      "w": 3,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 25,
+      "response": 0,
+      "etime": 25,
+      "rtime": 12
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 3,
+      "response": 3,
+      "etime": 3,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 6,
+      "response": 1,
+      "etime": 6,
+      "rtime": 1
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 8,
+      "response": 4,
+      "etime": 8,
+      "rtime": 1
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 12,
+      "response": 2,
+      "etime": 12,
+      "rtime": 3
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 16,
+      "response": 3,
+      "etime": 16,
+      "rtime": 5
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 17,
+      "response": 0,
+      "etime": 17,
+      "rtime": 7
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 3,
+      "response": 3,
+      "etime": 3,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 7,
+      "response": 1,
+      "etime": 7,
+      "rtime": 1
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 11,
+      "response": 4,
+      "etime": 11,
+      "rtime": 1
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 15,
+      "response": 2,
+      "etime": 15,
+      "rtime": 3
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 17,
+      "response": 3,
+      "etime": 17,
+      "rtime": 5
+    },
+    {
+      "rep": 1,
+      "w": 1,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 17,
+      "response": 0,
+      "etime": 17,
+      "rtime": 7
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 0,
+      "kind": "interactive",
+      "turnaround": 22,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 0,
+      "kind": "interactive",
+      "turnaround": 22,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 0,
+      "kind": "interactive",
+      "turnaround": 22,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 0,
+      "kind": "hog",
+      "turnaround": 33,
+      "response": 1,
+      "etime": 33,
+      "rtime": 16
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 0,
+      "kind": "hog",
+      "turnaround": 34,
+      "response": 0,
+      "etime": 34,
+      "rtime": 18
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 1,
+      "kind": "hog",
+      "turnaround": 32,
+      "response": 1,
+      "etime": 32,
+      "rtime": 16
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 1,
+      "kind": "hog",
+      "turnaround": 34,
+      "response": 0,
+      "etime": 34,
+      "rtime": 18
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 34,
+      "response": 2,
+      "etime": 34,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 34,
+      "response": 2,
+      "etime": 34,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 34,
+      "response": 2,
+      "etime": 34,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 23,
+      "response": 1,
+      "etime": 23,
+      "rtime": 11
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 6,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 10,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 14,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 18,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 1,
+      "response": 1,
+      "etime": 24,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 27,
+      "response": 0,
+      "etime": 27,
+      "rtime": 16
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 4,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 8,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 12,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 16,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 20,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 24,
+      "rtime": 0
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 25,
+      "response": 1,
+      "etime": 25,
+      "rtime": 13
+    },
+    {
+      "rep": 1,
+      "w": 3,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 26,
+      "response": 0,
+      "etime": 26,
+      "rtime": 13
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 7,
+      "response": 1,
+      "etime": 7,
+      "rtime": 1
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 8,
+      "response": 3,
+      "etime": 8,
+      "rtime": 1
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 9,
+      "response": 5,
+      "etime": 9,
+      "rtime": 1
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 13,
+      "response": 2,
+      "etime": 13,
+      "rtime": 3
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 17,
+      "response": 4,
+      "etime": 17,
+      "rtime": 5
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 18,
+      "response": 0,
+      "etime": 18,
+      "rtime": 7
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 3,
+      "response": 3,
+      "etime": 3,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 7,
+      "response": 1,
+      "etime": 7,
+      "rtime": 1
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 11,
+      "response": 4,
+      "etime": 11,
+      "rtime": 1
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 15,
+      "response": 2,
+      "etime": 15,
+      "rtime": 3
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 17,
+      "response": 3,
+      "etime": 17,
+      "rtime": 5
+    },
+    {
+      "rep": 2,
+      "w": 1,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 18,
+      "response": 0,
+      "etime": 18,
+      "rtime": 8
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 0,
+      "kind": "interactive",
+      "turnaround": 22,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 0,
+      "kind": "interactive",
+      "turnaround": 22,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 0,
+      "kind": "interactive",
+      "turnaround": 22,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 0,
+      "kind": "hog",
+      "turnaround": 35,
+      "response": 1,
+      "etime": 35,
+      "rtime": 17
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 0,
+      "kind": "hog",
+      "turnaround": 35,
+      "response": 0,
+      "etime": 35,
+      "rtime": 18
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 1,
+      "kind": "hog",
+      "turnaround": 32,
+      "response": 1,
+      "etime": 32,
+      "rtime": 16
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 1,
+      "kind": "hog",
+      "turnaround": 33,
+      "response": 0,
+      "etime": 33,
+      "rtime": 17
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 33,
+      "response": 2,
+      "etime": 33,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 33,
+      "response": 2,
+      "etime": 33,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 2,
+      "pol": 1,
+      "kind": "interactive",
+      "turnaround": 33,
+      "response": 2,
+      "etime": 33,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 23,
+      "response": 1,
+      "etime": 23,
+      "rtime": 11
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 6,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 10,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 14,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 18,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 2,
+      "response": 2,
+      "etime": 22,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 0,
+      "kind": "short",
+      "turnaround": 1,
+      "response": 1,
+      "etime": 24,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 0,
+      "kind": "long",
+      "turnaround": 27,
+      "response": 0,
+      "etime": 27,
+      "rtime": 16
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 20,
+      "response": 1,
+      "etime": 20,
+      "rtime": 11
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 4,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 8,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 0,
+      "response": 0,
+      "etime": 12,
+      "rtime": 0
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 1,
+      "response": 0,
+      "etime": 17,
+      "rtime": 1
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 1,
+      "response": 0,
+      "etime": 21,
+      "rtime": 1
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 1,
+      "kind": "short",
+      "turnaround": 1,
+      "response": 0,
+      "etime": 26,
+      "rtime": 1
+    },
+    {
+      "rep": 2,
+      "w": 3,
+      "pol": 1,
+      "kind": "long",
+      "turnaround": 26,
+      "response": 0,
+      "etime": 26,
+      "rtime": 12
+    }
+  ]
+}
