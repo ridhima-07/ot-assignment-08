@@ -2,7 +2,7 @@
 
 **Ridhima Trivedi · 241071062 · TY BTech CS, Batch D** · Optimization Techniques, Assignment 8
 Repository: this folder · All tables: [`docs/RESULTS_SUMMARY.md`](docs/RESULTS_SUMMARY.md) (generated from `results/`) ·
-AI disclosure: [`docs/AI_TOOLS.md`](docs/AI_TOOLS.md) · Failures: [`docs/FAILURE_LOG.md`](docs/FAILURE_LOG.md)
+Failures: [`docs/FAILURE_LOG.md`](docs/FAILURE_LOG.md)
 
 > **Reading guide.** Each track follows the Section 4 workflow: process → baseline → formulation → method choice →
 > results → correctness check → trade-offs. "Measured" means timed on the test machine (2 vCPUs); "simulated" means a
@@ -272,7 +272,7 @@ reduced suites kill 78.6% of those, a random subset 67.9% — 100% line coverage
 9. **Quantum vs parallel.** Quantum algorithms give provable query reductions (DJ, BV, Grover) but, simulated, run
    slower; the variational classifier beat linear and small-MLP baselines but not an RBF-SVM, at ~10⁵ circuit evaluations; noise and barren plateaus limit scaling. Parallel computing
    gave measured ≈ 2× speedups on 2 cores, limited by load imbalance, synchronisation and communication.
-10. **AI tools.** Claude Opus 5.5 for everything (register in `docs/AI_TOOLS.md`). Fifteen AI errors were found and
+10. **AI tools.** Claude Opus 5.5 for everything. Fifteen AI errors were found and
     fixed, including a kernel deadlock, a missing MLFQ rule, an infeasible ILP from a data-join bug, and an inverted
     classifier. The second-tool comparison is to be completed by the student (`docs/TOOL_COMPARISON.md`).
 

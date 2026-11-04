@@ -1,6 +1,6 @@
 # Failure log — AI-generated code that was wrong, unsafe, inefficient or misleading
 
-Every entry below happened during development with **Claude Opus 5.5** (see `AI_TOOLS.md`). Each was caught by a
+Every entry below happened during development with **Claude Opus 5.5**. Each was caught by a
 verification step that is still in the repository, so it can be re-checked. The assignment asks for at least three;
 fifteen are recorded because each taught something different.
 
